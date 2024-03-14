@@ -3,44 +3,26 @@
 :root {
   /*========== Colors ==========*/
   --first-color-0: #ffffff;
-  --first-color-50: #f8f8f8;
-  --first-color-100: #efefef;
-  --first-color-200: #dcdcdc;
-  --first-color-300: #bdbdbd;
-  --first-color-400: #989898;
-  --first-color-500: #7c7c7c;
-  --first-color-600: #656565;
-  --first-color-700: #525252;
-  --first-color-800: #464646;
-  --first-color-900: #3d3d3d;
-  --first-color-950: #292929;
+  --first-color-50: #f3faf3;
+  --first-color-100: #e3f5e3;
+  --first-color-200: #c8eac9;
+  --first-color-300: #9dd89e;
+  --first-color-400: #6bbd6d;
+  --first-color-500: #4caf4f;
+  --first-color-600: #358437;
+  --first-color-700: #2d682f;
+  --first-color-800: #275429;
+  --first-color-900: #224524;
+  --first-color-950: #0e2510;
 
-  --secondary-color-0: #ffffff;
-  --secondary-color-50: #eef6ff;
-  --secondary-color-100: #d9eaff;
-  --secondary-color-200: #bcdbff;
-  --secondary-color-300: #8ec6ff;
-  --secondary-color-400: #59a5ff;
-  --secondary-color-500: #3a86ff;
-  --secondary-color-600: #1b60f5;
-  --secondary-color-700: #144be1;
-  --secondary-color-800: #173db6;
-  --secondary-color-900: #19388f;
-  --secondary-color-950: #142357;
+  --color-button: #FBC02D;
 
-  --color-openwork-button: #60BC87;
-  --color-notwork-button: #D94D4D;
+  --background-gradiant: #009963;
 
-  --background--right-side: #dcdcdc;
-  --background-icon-card: #2B2C34;
-
-  --border-color-button: rgba(152, 152, 152, 0.50);
-  --border-shadow-button: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
+  --border-color-card: rgba(255, 255, 255, 0.25);
+  --border-shadow-card: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
   --border-card-shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-
-  --border-openwork-color: rgba(96, 188, 135, 0.5);
-  --border-notwork-color: rgba(217, 77, 77, 0.5);
 
   --background-scroll: #353535;
   --border-scroll: #D9D9D9;
@@ -51,7 +33,7 @@
   --xx-large-font: 3.125rem; /* 50px */
   --x-large-font: 2.75rem; /* 44px */
   --large-font: 2.5rem; /* 40px */
-  --x-medium-large-font: 1.75rem; /*28px*/
+  --x-medium-large-font: 1.625rem; /*26px*/
   --medium-large-font: 1.375rem; /* 22px */
   --medium-font: 1.25rem; /* 20px */
   --normal-font: 1.125rem; /* 18px */
@@ -63,7 +45,7 @@
 
   /*========== Border Radius ==========*/
   --extra-boder-radius: 150px;
-  --large-border-radius: 26px;
+  --large-border-radius: 25px;
   --normal-border-radius: 15px;
   --small-border-radius: 10px;
 
