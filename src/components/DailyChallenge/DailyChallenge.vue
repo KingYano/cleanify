@@ -1,0 +1,15 @@
+<template>
+  <section class="daily-challenge">
+    <h2 class="daily-challenge-title">Challenge du jour :</h2>
+    <large-card></large-card>
+  </section>
+</template>
+
+<script setup lang="ts">
+  import LargeCard from '../Cards/LargeCard/LargeCard.vue';
+
+</script>
+
+<style lang="scss">
+  @import 'DailyChallenge';
+</style>
