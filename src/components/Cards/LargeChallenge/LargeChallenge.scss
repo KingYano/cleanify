@@ -1,5 +1,5 @@
 .large-challenge {
-  margin: 16px;
+  margin: 16px 16px 56px;
   background: var(--color-large-background-card);
   border: var(--color-border-card) solid 1px;
   box-shadow: var(--border-card-shadow);
@@ -20,7 +20,7 @@
       font-weight: var(--extra-large-font-weight);
     }
 
-    &-paragraph {
+    &-info {
       font-size: var(--small-medium-font);
       font-weight: var(--normal-font-weight);
     }
