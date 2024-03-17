@@ -19,8 +19,8 @@
 <script setup lang="ts">
   // import { RouterLink, RouterView } from 'vue-router'
   // import HelloWorld from './components/HelloWorld.vue'
-  import HeaderNavigation from './components/HeaderNavigation/HeaderNavigation.vue';
-  import MainContent from "@/components/MainContent/MainContent.vue";
+  import HeaderNavigation from '@/components/HeaderSection/HeaderSection.vue';
+  import MainContent from "@/components/MainSection/MainSection.vue";
 </script>
 
 <style scoped>

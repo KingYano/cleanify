@@ -1,4 +1,4 @@
-.info-stats {
+.stat-section {
   background: var(--first-color-50);
   padding: 40px 45px;
 
@@ -17,12 +17,12 @@
     margin-bottom: 35px;
   }
 
-  .info-stats-icon {
+  .stat-section-icon {
     display: flex;
     flex-direction: column;
     gap: 35px;
 
-    .info-stat-icon-item {
+    .stat-section-icon-item {
       display: flex;
       flex-direction: column;
       align-items: center;

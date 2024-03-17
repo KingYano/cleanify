@@ -1,4 +1,4 @@
-.header-nav {
+.header-section {
   height: 61px;
   width: 100%;
   background: var(--first-color-0);
@@ -8,6 +8,6 @@
 
   &-title {
     font-size: var(--large-font);
-    font-weight: var(--normal-font-weight);
+    font-weight: var(--large-font-weight);
   }
 }

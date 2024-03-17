@@ -1,0 +1,15 @@
+.footer-section {
+  text-align: center;
+  &-text {
+    font-size: var(--small-medium-font);
+    font-weight: var(--medium-font-weight);
+
+    &-link {
+      color: var(--first-color-950);
+
+      &:hover {
+        color: var(--first-color-500);
+      }
+    }
+  }
+}
