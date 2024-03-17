@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-  import LargeCard from '../Cards/LargeCard/LargeCard.vue';
+  import LargeCard from '@/components/Cards/LargeChallenge/LargeChallenge.vue';
 
 </script>
 

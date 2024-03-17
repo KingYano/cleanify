@@ -1,0 +1,45 @@
+.large-challenge {
+  margin: 16px;
+  background: var(--color-large-background-card);
+  border: var(--color-border-card) solid 1px;
+  box-shadow: var(--border-card-shadow);
+  border-radius: var(--normal-border-radius);
+  background-image: url("@/../src/assets/illustrations/mobile.svg");
+  background-size: 85%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &-information {
+    margin: 21px;
+    padding: 7px 15px;
+    background: var(--color-info-background-card);
+    border-radius: var(--large-border-radius);
+
+    &-title {
+      font-size: var(--normal-font);
+      font-weight: var(--extra-large-font-weight);
+    }
+
+    &-paragraph {
+      font-size: var(--small-medium-font);
+      font-weight: var(--normal-font-weight);
+    }
+  }
+
+  &-start {
+    margin-top: 253px;
+    margin-bottom: 26px;
+    display: flex;
+    justify-content: center;
+
+    &-button {
+      padding: 12px 26px;
+      font-size: var(--normal-font);
+      font-weight: var(--extra-large-font-weight);
+      color: var(--first-color-950);
+      background-color: var(--color-button);
+      border-radius: var(--normal-border-radius);
+      border: unset;
+    }
+  }
+}

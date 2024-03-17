@@ -17,14 +17,19 @@
 
   --color-button: #FBC02D;
 
-  --gradient-color-start: rgba(43, 180, 70, 0);
-  --gradient-color-mid: rgba(43, 180, 70, 0.13);
-  --gradient-color-end: rgba(43, 180, 70, 0);
-
-  --border-color-card: rgba(255, 255, 255, 0.25);
+  --color-large-background-card: rgba(255, 255, 255, 0.3);
+  --color-border-card: rgba(255, 255, 255, 0.25);
   --border-shadow-card: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
-  --border-card-shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  --color-info-background-card: rgba(245, 247, 255, 0.95);
+
+
+  --gradient-color-both: rgba(26, 203, 61, 0);
+  --gradient-color-mid: rgba(43, 180, 70, 0.24);
+
+
+  --border-card-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   --background-scroll: #353535;
   --border-scroll: #D9D9D9;
@@ -55,23 +60,12 @@
   --very-very-small-font-weight: 100; /* Thin */
   --very-small-font-weight: 200; /* ExtraLight */
   --small-font-weight: 300; /* Light */
-  --medium-font-weight: 500; /* Regular */
-  --normal-font-weight: 600; /* Medium */
-  --large-font-weight: 700; /* SemiBold */
-  --extra-large-font-weight: 800; /* Bold */
-  --maximum-font-weight: 900; /* Black */
+  --medium-font-weight: 400; /* Regular */
+  --normal-font-weight: 500; /* Medium */
+  --large-font-weight: 600; /* SemiBold */
+  --extra-large-font-weight: 700; /* Bold */
+  --maximum-font-weight: 800; /* ExtraBold */
 
-
-  /*========== Breakpoint screen ==========*/
-  --tablette-screen : 768px;
-  --tablette-screen-xl : 896px;
-  --laptop-screen : 1024px;
-  --laptop-screen-xl : 1378px;
-  --medium-screen : 1440px;
-  --medium-screen-xl : 1680px;
-  --large-screen : 1920px;
-  --extra-large-screen : 2048px;
-  --giga-large-screen : 3840px;
 }
 
 *,
