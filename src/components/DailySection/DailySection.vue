@@ -10,5 +10,5 @@
 </script>
 
 <style lang="scss">
-  @import "DailyChallenge";
+  @import "DailySection";
 </style>

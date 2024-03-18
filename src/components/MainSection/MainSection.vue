@@ -1,6 +1,6 @@
 <template>
   <section class="main-section">
-    <daily-challenge></daily-challenge>
+    <daily-section></daily-section>
     <information-stat></information-stat>
     <list-section></list-section>
     <information-section></information-section>
@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-  import DailyChallenge from '@/components/DailyChallenge/DailyChallenge.vue';
+  import DailySection from '@/components/DailySection/DailySection.vue';
   import InformationStat from '@/components/StatisticSection/StatisticSection.vue';
   import ListSection from '@/components/ListSection/ListSection.vue';
   import InformationSection from '@/components/InformationSection/InformationSection.vue';
