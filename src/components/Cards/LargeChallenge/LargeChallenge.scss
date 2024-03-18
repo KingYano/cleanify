@@ -50,6 +50,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    background-size: 60%;
 
     &-content {
       padding: 20px;
@@ -58,13 +59,54 @@
 
 
       &-information {
-        margin: unset;
-        margin-right: 25px;
+        width: 70%;
+        margin: 0 25px 0 0;
+
+        &-title {
+          font-size: var(--medium-font);
+        }
+
+        &-info {
+          font-size: var(--normal-font);
+        }
       }
 
       &-start {
         margin: unset;
         display: block;
+
+        &-button {
+          font-size: var(--medium-font);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+  .large-challenge {
+    background-size: 40%;
+
+    &-content {
+      padding: 60px;
+
+      &-information {
+        width: 50%;
+        margin: 0 25px 0 0;
+
+        &-title {
+          font-size: var(--medium-large-font);
+        }
+
+        &-info {
+          font-size: var(--medium-font);
+        }
+      }
+
+      &-start {
+        &-button {
+          font-size: var(--medium-large-font);
+        }
       }
     }
   }

@@ -20,11 +20,13 @@
     height: calc(100vh - 63px);
 
     &-title {
+      padding-top: 32px;
+      padding-bottom: 22px;
       font-size: var(--medium-large-font);
       padding-left: 166px;
     }
     .large-challenge {
-      height: 80%;
+      height: 75%;
       margin: 0 166px 56px 166px;
     }
   }
