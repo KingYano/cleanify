@@ -1,0 +1,31 @@
+.daily-section {
+  overflow: hidden;
+
+  &-title {
+    padding-left: 16px;
+    padding-top: 42px;
+    padding-bottom: 32px;
+    font-size: var(--medium-font);
+    font-weight: var(--extra-large-font-weight);
+    text-transform: uppercase;
+  }
+
+  .large-challenge {
+    margin: 0 16px 56px 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .daily-section {
+    height: calc(100vh - 63px);
+
+    &-title {
+      font-size: var(--medium-large-font);
+      padding-left: 166px;
+    }
+    .large-challenge {
+      height: 80%;
+      margin: 0 166px 56px 166px;
+    }
+  }
+}

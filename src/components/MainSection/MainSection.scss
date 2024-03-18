@@ -1,16 +1,3 @@
 .main-section {
-  overflow: auto;
 
-  &-title {
-    padding-left: 16px;
-    padding-top: 48px;
-    padding-bottom: 32px;
-    font-size: var(--medium-font);
-    font-weight: var(--extra-large-font-weight);
-    text-transform: uppercase;
-  }
-
-  .large-challenge {
-    margin: 0 16px 56px 16px;
-  }
 }
