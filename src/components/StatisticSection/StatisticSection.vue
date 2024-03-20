@@ -1,7 +1,9 @@
 <template>
   <section class="stat-section">
-    <h3 class="stat-section-title">Quelques chiffres clés du <span class="stat-section-title-highlight">Digital Clean Up</span> :</h3>
-    <p class="stat-section-info">Les chiffres du challenge édition 2023 de l'entreprise Interstis.</p>
+  <div class="stat-section-paragraph">
+    <h3 class="stat-section-paragraph-title">Quelques chiffres clés du <span class="stat-section-paragraph-title-highlight">Digital Clean Up</span> :</h3>
+    <p class="stat-section-paragraph-info">Les chiffres du challenge édition 2023 de l'entreprise Interstis.</p>
+  </div>
     <div class="stat-section-icon">
       <div class="stat-section-icon-item">
         <em class="icon ri-mail-line"></em>
