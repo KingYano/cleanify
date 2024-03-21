@@ -52,8 +52,11 @@
   .stat-section {
     display: flex;
     align-items: center;
+    justify-content: space-around;
 
     &-paragraph {
+      min-width: 505px;
+
       &-title, &-title-highlight {
         font-size: var(--medium-large-font);
       }

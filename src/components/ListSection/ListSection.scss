@@ -19,3 +19,35 @@
     margin: 0 16px;
   }
 }
+
+@media (min-width: 1024px) {
+  .list-section {
+    &-title {
+      font-size: var(--medium-large-font);
+    }
+
+    &-cards {
+      height: 100%;
+      justify-content: center;
+      flex-direction: row;
+    }
+
+    .small-challenge {
+      margin: 0 16px;
+      width: 28%;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
