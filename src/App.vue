@@ -13,6 +13,7 @@
 
   <header-navigation></header-navigation>
   <main-content></main-content>
+  <footer-section></footer-section>
 
 </template>
 
@@ -21,6 +22,7 @@
   // import HelloWorld from './components/HelloWorld.vue'
   import HeaderNavigation from '@/components/HeaderSection/HeaderSection.vue';
   import MainContent from "@/components/MainSection/MainSection.vue";
+  import FooterSection from "@/components/FooterSection/FooterSection.vue";
 </script>
 
 <style scoped>

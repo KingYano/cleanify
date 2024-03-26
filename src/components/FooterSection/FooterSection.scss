@@ -1,5 +1,8 @@
 .footer-section {
+  padding: 0 0 22px 0;
+  background: var(--first-color-50);
   text-align: center;
+
   &-text {
     font-size: var(--small-medium-font);
     font-weight: var(--medium-font-weight);
@@ -10,6 +13,14 @@
       &:hover {
         color: var(--first-color-500);
       }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-section {
+    &-text {
+      font-size: var(--normal-font);
     }
   }
 }
