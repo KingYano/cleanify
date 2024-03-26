@@ -31,3 +31,13 @@
     }
   }
 }
+
+@media (min-width: 1600px) {
+  .daily-section {
+    height: 100%;
+
+    .large-challenge {
+      height: 670px;
+    }
+  }
+}

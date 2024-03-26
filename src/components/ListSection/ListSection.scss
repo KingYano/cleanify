@@ -23,6 +23,7 @@
 @media (min-width: 1024px) {
   .list-section {
     &-title {
+      padding-left: 22px;
       font-size: var(--medium-large-font);
     }
 
@@ -35,6 +36,36 @@
     .small-challenge {
       margin: 0 16px;
       width: 28%;
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+  .list-section {
+    &-title {
+      padding-left: 68px;
+    }
+
+    .small-challenge {
+      height: 670px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background-size: 90%;
+
+      &-information {
+        margin: 0 21px 21px;
+
+      }
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  .list-section {
+    &-title {
+      padding-left: 89px;
+      font-size: var(--x-medium-large-font);
     }
   }
 }
