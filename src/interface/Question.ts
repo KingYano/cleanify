@@ -25,7 +25,7 @@ interface Question {
     illustrationContent: string;
 }
 
-interface Data {
+interface MailData {
     id: number;
     day: number;
     target: string;

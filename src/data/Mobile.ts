@@ -1,4 +1,4 @@
-const data: Data[] = [
+const mailData: MailData[] = [
     {
         id: 1,
         day: 1,
