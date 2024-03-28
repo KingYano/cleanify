@@ -1,8 +1,8 @@
-const mailData: MailData[] = [
+const mobileData: MobileData[] = [
     {
         id: 1,
         day: 1,
-        target: 'Téléphone',
+        target: 'téléphone',
         questions: [
             {
                 questionNumber: 1,

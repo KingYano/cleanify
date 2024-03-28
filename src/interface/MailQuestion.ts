@@ -1,22 +1,11 @@
-interface Instruction {
-    android?: string;
-    ios?: string;
-}
-
-interface Systems {
-    android?: string;
-    ios?: string;
-}
-
-interface Question {
+interface MailQuestion {
     questionNumber: number;
     title: string;
     response: boolean;
     responseContent: { A: string; B: string } | null;
     textField: boolean;
     instruction: boolean;
-    instructionContent: Instruction | null;
-    system: Systems | null;
+    instructionContent: string;
     moreQuestion: boolean;
     moreQuestionContent: string;
     textInfo: boolean,
@@ -29,5 +18,5 @@ interface MailData {
     id: number;
     day: number;
     target: string;
-    questions: Question[];
+    questions: MailQuestion[];
 }
