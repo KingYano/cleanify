@@ -214,7 +214,7 @@ const mobileData: MobileData[] = [
             },
             {
                 questionNumber: 11,
-                title: " Vous y êtes presque !",
+                title: "Vous y êtes presque !",
                 response: false,
                 responseContent: null,
                 textField: true,
