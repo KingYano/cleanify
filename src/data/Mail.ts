@@ -1,4 +1,4 @@
-const mailData: MailData[] = [
+export const mailData: Challenge[] = [
     {
         id: 1,
         day: 2,
@@ -112,3 +112,6 @@ const mailData: MailData[] = [
         ]
     },
 ];
+
+export class mobileData {
+}

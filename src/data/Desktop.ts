@@ -1,4 +1,4 @@
-const desktopData: DesktopData[] = [
+export const desktopData: Challenge[] = [
     {
         id: 1,
         day: 1,

@@ -1,4 +1,4 @@
-const mobileData: MobileData[] = [
+export const mobileData: Challenge[] = [
     {
         id: 1,
         day: 1,
