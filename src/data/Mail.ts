@@ -6,7 +6,7 @@ const mailData: MailData[] = [
         questions: [
             {
                 questionNumber: 1,
-                title: "Avant de vous lancer véritablement, assurez-vous de vider votre poubelle. Repartez de zéro afin de mesurer plus aisément les conséquences de vos prochaines actions.",
+                title: "Avant de vous lancer véritablement, assurez-vous de vider votre corbeille. Repartez de zéro afin de mesurer plus aisément les conséquences de vos prochaines actions.",
                 response: true,
                 responseContent: { A: "Oui", B: "Non" },
                 textField: false,
@@ -36,7 +36,7 @@ const mailData: MailData[] = [
             },
             {
                 questionNumber: 3,
-                title: "Supprimer les emails. Après le filtre, il est temps d'un (vrai) coup de balai digital !",
+                title: "Supprimer les emails. Après le filtre, il est temps d'un vrai coup de balai digital !",
                 response: false,
                 responseContent: null,
                 textField: true,
@@ -51,12 +51,12 @@ const mailData: MailData[] = [
             },
             {
                 questionNumber: 4,
-                title: "Se désinscrire de newsletters indésirables ou non lues. Vous les effacez avant même de les lire. Vous les gardez dans un onglet newsletter pour \"quand j'aurais du temps\", mais cela n'arrive pas souvent. Leurs notifications vous distraient. La solution ? Se désinscrire ! Ne gardez que celles que vous ne ratez jamais.",
+                title: "Se désinscrire de newsletters indésirables ou non lues. Vous les effacez avant même de les lire.Leurs notifications vous distraient. La solution ? Se désinscrire ! Ne gardez que celles que vous ne ratez jamais.",
                 response: false,
                 responseContent: null,
                 textField: true,
                 instruction: true,
-                instructionContent: "À la fin de chaque newsletter, vous trouverez un lien \"Unsubscribe\" ou \"Désabonnez-vous\" écrit en minuscule. Attention ! Il ne s'agit pas toujours d'un seul clic. Quelques fois vous serez reconduit vers une page externe et une formulaire à remplir.",
+                instructionContent: "À la fin de chaque newsletter, vous trouverez un lien \"Unsubscribe\" ou \"Désabonnez-vous\" écrit en minuscule. Attention ! Il ne s'agit pas toujours d'un seul clic. Quelques fois vous serez reconduit vers une page externe.",
                 moreQuestion: true,
                 moreQuestionContent: "De combien de newsletters vous êtes vous désinscrit ? ",
                 textInfo: false,
@@ -66,12 +66,12 @@ const mailData: MailData[] = [
             },
             {
                 questionNumber: 5,
-                title: "Désactiver des notifications par email. Slack, Notion, Facebook, Google Meet, Duolingo... Certaines des applications que vous utilisez au quotidien vous informe constamment de modifications ou notifications sur l'application elle-même ET par email.",
+                title: "Désactiver des notifications par email. Slack, Notion, Gitlab... Certaines des applications que vous utilisez au quotidien vous informe constamment de modifications sur l'application ET par email.",
                 response: false,
                 responseContent: null,
                 textField: true,
                 instruction: true,
-                instructionContent: "À la fin de chaque newsletter, vous trouverez un lien \"Unsubscribe\" ou \"Désabonnez-vous\" écrit en minuscule. Attention ! Il ne s'agit pas toujours d'un seul clic. Quelques fois vous serez reconduit vers une page externe et une formulaire à remplir.",
+                instructionContent: "ous pouvez limiter ces notifications dans les paramètres de chaque application.",
                 moreQuestion: false,
                 moreQuestionContent: "",
                 textInfo: false,
@@ -81,7 +81,7 @@ const mailData: MailData[] = [
             },
             {
                 questionNumber: 6,
-                title: "Vider votre corbeille (ou le moment le plus satisfaisant de tous les temps). Vous venez de supprimer de nombreux e-mails, mais les avez-vous réellement supprimés ?",
+                title: "Vider votre corbeille. Vous venez de supprimer de nombreux e-mails, mais les avez-vous réellement supprimés ?",
                 response: true,
                 responseContent: { A: "Oui", B: "Non" },
                 textField: false,
