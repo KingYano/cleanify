@@ -29,7 +29,7 @@
 
   function startChallenge(challenge: Challenge) {
     activeChallenge.value = challenge;
-    router.push({ name: 'rules', params: { target: challenge.target } });
+    router.push({ name: 'rules', params: { code: challenge.code } });
   }
 </script>
 
