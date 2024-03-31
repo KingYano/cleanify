@@ -1,30 +1,24 @@
 <template>
   <div class="survey">
-      <div class="survey-right-side">
-        <div class="survey-right-side-paragraph">
-          <h3 class="survey-right-side-paragraph-title">XXXXX</h3>
-          <p class="survey-paragraph-instruction"></p>
-          <p class="survey-paragraph-question"></p>
-          <p class="survey-paragraph-info"></p>
-          <button-response></button-response>
-          <input-response></input-response>
-        </div>
+    <h2 class="survey-title">Nettoyer son {{ challenge.target }}</h2>
+    <form class="survey-form">
+      <div v-for="question in challenge.questions" :key="question.id">
+        <h3 class="survey-question-title">{{ question.title }}</h3>
+        <p class="survey-question-info">XXX</p>
+        <!-- Ajoutez les champs de formulaire pour chaque question ici -->
       </div>
-      <div class="survey-right-side-start">
-        <button class="survey-right-side-start-button">Commencer</button>
-      </div>
-    <div class="survey-right-side">
-
-    </div>
+      <button class="survey-form-submit-button" type="submit">Envoyer</button>
+    </form>
   </div>
 </template>
 
 <script setup lang="ts">
-  import InputResponse from '@/components/Surveys/TypeResponse/InputResponse.vue';
-  import ButtonResponse from '@/components/Surveys/TypeResponse/ButtonResponse.vue';
+  import { defineProps } from 'vue';
+  import type { Challenge } from '@/interface/Challenge';
 
-  defineProps(['data']);
-
+  defineProps<{
+    challenge: Challenge;
+  }>();
 </script>
 
 <style lang="scss">

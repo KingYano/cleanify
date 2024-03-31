@@ -1,8 +1,11 @@
+import type {Challenge} from "@/interface/Challenge";
+
 export const mobileData: Challenge[] = [
     {
-        id: 1,
-        day: 1,
+        id: 2,
+        day: 2,
         target: 'téléphone',
+        description: 'Faites de la place et boostez les performances en triant applications, photos inutiles.',
         questions: [
             {
                 questionNumber: 1,

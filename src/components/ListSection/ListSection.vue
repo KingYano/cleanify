@@ -5,30 +5,34 @@
       <small-challenge
           v-for="challenge in challenges"
           :key="challenge.id"
-          :title="challenge.target"
+          :challenge="challenge"
           @start="startChallenge(challenge)"
-      ></small-challenge>
+      />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import SmallChallenge from '@/components/Cards/SmallChallenge/SmallChallenge.vue';
-import { ref } from 'vue';
-import type { Challenge } from '@/interface/Challenge';
-import { mailData } from '@/data/Mail';
-import { desktopData } from '@/data/Desktop';
-import { mobileData } from '@/data/Mobile';
+  import SmallChallenge from '@/components/Cards/SmallChallenge/SmallChallenge.vue';
+  import { ref } from 'vue';
+  import type { Challenge } from '@/interface/Challenge';
+  import { mailData } from '@/data/Mail';
+  import { desktopData } from '@/data/Desktop';
+  import { mobileData } from '@/data/Mobile';
+  import { useRouter } from 'vue-router';
 
-const challenges: Challenge[] = [...mailData, ...desktopData, ...mobileData];
+  const challenges: Challenge[] = [...mailData, ...desktopData, ...mobileData];
 
-const activeChallenge = ref<Challenge | null>(null);
+  const activeChallenge = ref<Challenge | null>(null);
 
-function startChallenge(challenge: Challenge) {
-  activeChallenge.value = challenge;
-}
+  const router = useRouter();
+
+  function startChallenge(challenge: Challenge) {
+    activeChallenge.value = challenge;
+    router.push({ name: 'rules', params: { target: challenge.target } });
+  }
 </script>
 
 <style lang="scss">
-@import "ListSection";
+  @import "ListSection";
 </style>

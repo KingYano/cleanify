@@ -1,8 +1,11 @@
+import type {Challenge} from "@/interface/Challenge";
+
 export const desktopData: Challenge[] = [
     {
-        id: 1,
-        day: 1,
+        id: 3,
+        day: 3,
         target: 'ordinateur',
+        description: 'Faites de la place et boostez les performances en triant fichiers, applications et photos inutiles.',
         questions: [
             {
                 questionNumber: 1,

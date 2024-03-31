@@ -1,8 +1,11 @@
+import type {Challenge} from "@/interface/Challenge";
+
 export const mailData: Challenge[] = [
     {
         id: 1,
-        day: 2,
+        day: 1,
         target: 'boîte email',
+        description: 'Faites de la place et boostez les performances en triant les emails inutiles.',
         questions: [
             {
                 questionNumber: 1,
@@ -112,6 +115,3 @@ export const mailData: Challenge[] = [
         ]
     },
 ];
-
-export class mobileData {
-}
