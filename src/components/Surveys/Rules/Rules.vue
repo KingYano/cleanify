@@ -16,7 +16,7 @@
         <p class="survey-rules-right-side-text">Afin de réussir votre challenge, merci de remplir intégralement le formulaire. Si une tâche vous semble irréalisable ou indésirable, inscrivez simplement 0 en tant que réponse.</p>
       </div>
       <div class="survey-rules-right-side-start">
-        <button class="survey-rules-right-side-start-button" @click="$emit('next')">Suivant</button>
+        <button class="survey-rules-right-side-start-button" @click="next">Suivant</button>
       </div>
     </div>
   </div>
@@ -39,10 +39,10 @@ const challenge = computed(() => {
   return challenges.value.find(challenge => challenge.code === code);
 });
 
-const emit = defineEmits<{(e: 'next'): void}>();
+const emit = defineEmits<{(e: 'next', challenge?: Challenge): void}>();
 
 function next() {
-  emit('next');
+  emit('next', challenge.value);
 }
 </script>
 

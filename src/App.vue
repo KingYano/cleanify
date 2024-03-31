@@ -1,6 +1,6 @@
 <template>
   <header-navigation></header-navigation>
-  <component :is="currentView" @next="goToSurvey"></component>
+  <component :is="currentView" @next="goToSurvey" :challenge="currentChallenge"></component>
   <footer-section></footer-section>
 </template>
 
@@ -10,8 +10,9 @@ import MainContent from "@/components/MainSection/MainSection.vue";
 import Rules from "@/components/Surveys/Rules/Rules.vue";
 import Survey from "@/components/Surveys/Survey/Survey.vue";
 import FooterSection from "@/components/FooterSection/FooterSection.vue";
-import { markRaw, computed } from 'vue';
+import { markRaw, computed, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import type {Challenge} from "@/interface/Challenge";
 
 const route = useRoute();
 const router = useRouter();
@@ -26,8 +27,13 @@ const currentView = computed(() => {
   }
 });
 
-function goToSurvey() {
-  router.push({ name: 'survey', params: { code: route.params.code } });
+const currentChallenge = ref<Challenge | null>(null);
+
+function goToSurvey(challenge?: Challenge) {
+  if (challenge) {
+    currentChallenge.value = challenge;
+    router.push({ name: 'survey', params: { code: challenge.code } });
+  }
 }
 </script>
 
