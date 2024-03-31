@@ -12,13 +12,13 @@ const router = createRouter({
       component: App
     },
     {
-      path: '/rules/:target',
+      path: '/rules/:code',
       name: 'rules',
       component: Rules,
       props: true
     },
     {
-      path: '/survey/:target',
+      path: '/survey/:code',
       name: 'survey',
       component: Survey,
       props: true

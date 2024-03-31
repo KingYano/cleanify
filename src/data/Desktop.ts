@@ -5,9 +5,11 @@ export const desktopData: Challenge[] = [
         id: 3,
         day: 3,
         target: 'ordinateur',
+        code: 'desktop',
         description: 'Faites de la place et boostez les performances en triant fichiers, applications et photos inutiles.',
         questions: [
             {
+                id: 1,
                 questionNumber: 1,
                 title: "Quel est système de votre ordinateur ?",
                 response: true,
@@ -24,6 +26,7 @@ export const desktopData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 2,
                 questionNumber: 2,
                 title: "Pour évaluer l'impact de vos actions, il faut tout d'abord connaître la quantité actuelle de données stockées sur votre ordinateur. Comment trouver cette donnée ?",
                 response: false,
@@ -46,6 +49,7 @@ export const desktopData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 3,
                 questionNumber: 3,
                 title: "Tout d'abord, videz votre corbeille pour continuer à facilement comptabiliser vos prochaines actions !",
                 response: false,
@@ -62,6 +66,7 @@ export const desktopData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 4,
                 questionNumber: 4,
                 title: "Trier et supprimer vos fichiers. Réorganiser vos fichiers vous aidera à identifier les fichiers qui vous sont réellement utiles et facilitera donc le tri.",
                 response: false,
@@ -84,6 +89,7 @@ export const desktopData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 5,
                 questionNumber: 5,
                 title: "Videz votre corbeille pour continuer à facilement comptabiliser vos prochaines actions !",
                 response: false,
@@ -100,6 +106,7 @@ export const desktopData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 6,
                 questionNumber: 6,
                 title: "Supprimer vos fichiers téléchargés. Cartes d'embarquement, factures, dossier de présentation, images, captures d'écran...",
                 response: false,
@@ -122,6 +129,7 @@ export const desktopData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 7,
                 questionNumber: 7,
                 title: "Videz votre corbeille pour continuer à facilement comptabiliser vos prochaines actions !",
                 response: false,
@@ -138,6 +146,7 @@ export const desktopData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 8,
                 questionNumber: 8,
                 title: "Trier et supprimer vos photos et vidéos. Ne gardez que vos photos préférées ou de meilleure qualité.",
                 response: false,
@@ -160,6 +169,7 @@ export const desktopData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 9,
                 questionNumber: 9,
                 title: "Videz votre corbeille pour continuer à facilement comptabiliser vos prochaines actions !",
                 response: false,
@@ -176,6 +186,7 @@ export const desktopData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 10,
                 questionNumber: 10,
                 title: "Effacer votre historique de navigation. Dès que vous entrez sur un moteur de recherche, il garde en mémoire les fichiers que vous avez téléchargés et vos informations personnelles grâce aux cookies.",
                 response: true,
@@ -198,6 +209,7 @@ export const desktopData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 11,
                 questionNumber: 11,
                 title: "Faire le tri dans vos extensions. Vous avez peut-être dû à un moment ou un autre télécharger une extension sur votre navigateur.",
                 response: true,
@@ -220,6 +232,7 @@ export const desktopData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 12,
                 questionNumber: 12,
                 title: "Vous y êtes presque !",
                 response: false,

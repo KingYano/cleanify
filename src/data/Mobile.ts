@@ -5,9 +5,11 @@ export const mobileData: Challenge[] = [
         id: 2,
         day: 2,
         target: 'téléphone',
+        code: 'phone',
         description: 'Faites de la place et boostez les performances en triant applications, photos inutiles.',
         questions: [
             {
+                id: 1,
                 questionNumber: 1,
                 title: "Quel système d'exploitation utilisez-vous ?",
                 response: true,
@@ -24,6 +26,7 @@ export const mobileData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 2,
                 questionNumber: 2,
                 title: "Pour évaluer l'impact de vos actions, identifiez d'abord l'espace de stockage utilisé sur votre smartphone. Comment accéder à cette information ?",
                 response: false,
@@ -46,6 +49,7 @@ export const mobileData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 3,
                 questionNumber: 3,
                 title: "Supprimez les applications inutilisées, chronophage ou stressantes.",
                 response: false,
@@ -68,6 +72,7 @@ export const mobileData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 4,
                 questionNumber: 4,
                 title: "Faites le tri dans vos photos et vidéos, en éliminant celles qui sont floues ou obsolètes, comme les captures d'écran inutiles.",
                 response: false,
@@ -90,6 +95,7 @@ export const mobileData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 5,
                 questionNumber: 5,
                 title: "Nettoyez votre dossier de téléchargements, comme des menus ou des cartes d'embarquement, téléchargés pour une consultation unique et ensuite oubliés.",
                 response: false,
@@ -112,6 +118,7 @@ export const mobileData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 6,
                 questionNumber: 6,
                 title: "Faites le ménage dans vos notes, qu'il s'agisse de listes de courses, de brouillons de messages ou de listes de tâches.",
                 response: false,
@@ -131,6 +138,7 @@ export const mobileData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 7,
                 questionNumber: 7,
                 title: "Faites le tri dans votre répertoire. Le nettoyage s'applique aussi aux contacts.",
                 response: false,
@@ -153,6 +161,7 @@ export const mobileData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 8,
                 questionNumber: 8,
                 title: "Épurer vos conversations, qu'il s'agisse de SMS de confirmation ou d'échanges éphémères, peut alléger le flux de votre messagerie.",
                 response: false,
@@ -172,6 +181,7 @@ export const mobileData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 9,
                 questionNumber: 9,
                 title: "Videz votre historique de navigation. Une utilisation quotidienne d'internet amasse des données superflues, alourdissant la mémoire et sollicitant inutilement votre téléphone.",
                 response: false,
@@ -194,6 +204,7 @@ export const mobileData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 10,
                 questionNumber: 10,
                 title: "Minimisez les notifications. Les alertes de jeux, d'applications ou d'actualités captent sans cesse notre attention, provoquant une vigilance permanente et d'incessantes distractions.",
                 response: false,
@@ -216,6 +227,7 @@ export const mobileData: Challenge[] = [
                 illustrationContent: ""
             },
             {
+                id: 11,
                 questionNumber: 11,
                 title: "Vous y êtes presque !",
                 response: false,

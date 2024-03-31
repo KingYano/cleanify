@@ -19,6 +19,7 @@ interface DesktopSystems {
 }
 
 interface DevisesQuestion {
+    id: number,
     questionNumber: number;
     title: string;
     response: boolean;
