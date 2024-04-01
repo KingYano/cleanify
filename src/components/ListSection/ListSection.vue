@@ -30,6 +30,7 @@
   function startChallenge(challenge: Challenge) {
     activeChallenge.value = challenge;
     router.push({ name: 'rules', params: { code: challenge.code } });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 </script>
 

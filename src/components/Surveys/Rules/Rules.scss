@@ -20,11 +20,11 @@
     &-left {
       display: flex;
       justify-content: center;
-      margin-top: 28px;
-      margin-bottom: 56px;
+      padding-top: 28px;
+      padding-bottom: 56px;
 
       >img {
-        width: 80%;
+        width: 70%;
         height: auto;
       }
     }
@@ -35,18 +35,18 @@
       &-title {
         font-size: var(--normal-font);
         font-weight: var(--extra-large-font-weight);
-        margin-bottom: 12px;
+        padding-bottom: 12px;
       }
 
       &-text {
         font-weight: var(--normal-font-weight);
-        margin-bottom: 8px;
+        padding-bottom: 8px;
       }
 
       &-start {
         display: flex;
         justify-content: center;
-        margin-top: 26px;
+        padding-top: 26px;
         align-items: center;
 
         &-button {

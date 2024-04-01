@@ -2,7 +2,8 @@
   <div class="survey-rules">
     <div class="survey-rules-header">
       <h3 class="survey-rules-header-title">Jour {{ challenge?.day }}/3 du Digital Clean Up Challenge</h3>
-      <p class="survey-rules-header-info">Nettoyer son {{ challenge?.target }}</p>
+      <p class="survey-rules-header-info">Nettoyer {{ challenge?.target === 'boîte email' ? 'sa' : 'son' }} {{ challenge?.target }}</p>
+
     </div>
     <div class="survey-rules-split">
       <div class="survey-rules-split-left">

@@ -21,8 +21,7 @@
       }
 
       &-info {
-        font-size: var(--small-medium-font);
-        font-weight: var(--normal-font-weight);
+        font-weight: var(--medium-font-weight);
       }
     }
 
@@ -106,6 +105,29 @@
       &-start {
         &-button {
           font-size: var(--medium-large-font);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  .large-challenge {
+    &-content {
+      &-information {
+
+        &-title {
+          font-size: var(--x-medium-large-font);
+        }
+
+        &-info {
+          font-size: var(--medium-large-font);
+        }
+      }
+
+      &-start {
+        &-button {
+          font-size: var(--x-medium-large-font);
         }
       }
     }

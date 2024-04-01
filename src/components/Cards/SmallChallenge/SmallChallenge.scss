@@ -9,7 +9,7 @@
   background-position: 50% 10%;
 
   &-information {
-    margin: 256px 21px 21px;
+    margin: 264px 21px 21px;
     padding: 7px 15px;
     background: var(--color-info-background-card);
     border-radius: var(--large-border-radius);
@@ -20,8 +20,7 @@
     }
 
     &-info {
-      font-size: var(--small-medium-font);
-      font-weight: var(--normal-font-weight);
+      font-weight: var(--medium-font-weight);
     }
   }
 
@@ -54,6 +53,75 @@
         padding: 6px;
         font-size: var(--small-font);
         font-weight: var(--extra-large-font-weight);
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .small-challenge {
+    &-information {
+      height: 160px;
+
+      &-title {
+        font-size: var(--medium-font);
+      }
+
+      &-info {
+        font-size: var(--normal-font);
+      }
+    }
+
+    &-start {
+      &-button {
+        font-size: var(--medium-font);
+      }
+
+      &-badge {
+
+        &-date {
+          font-size: var(--base-font);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+  .small-challenge {
+    &-information {
+      &-title {
+        font-size: var(--medium-large-font);
+      }
+
+      &-info {
+        font-size: var(--medium-font);
+      }
+    }
+
+    &-start {
+      &-button {
+        font-size: var(--medium-large-font);
+      }
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  .small-challenge {
+    &-information {
+      &-title {
+        font-size: var(--x-medium-large-font);
+      }
+
+      &-info {
+        font-size: var(--medium-large-font);
+      }
+    }
+
+    &-start {
+      &-button {
+        font-size: var(--x-medium-large-font);
       }
     }
   }

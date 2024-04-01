@@ -41,3 +41,19 @@
     }
   }
 }
+
+@media (min-width: 1600px) {
+  .daily-section {
+    &-title {
+      font-size: var(--x-medium-large-font);
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+  .daily-section {
+    &-title {
+      font-size: var(--large-font);
+    }
+  }
+}
