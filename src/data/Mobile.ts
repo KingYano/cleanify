@@ -1,4 +1,6 @@
 import type {Challenge} from "@/interface/Challenge";
+import imageUrlMobile from "@/assets/illustrations/mobile.svg"
+
 
 export const mobileData: Challenge[] = [
     {
@@ -7,6 +9,8 @@ export const mobileData: Challenge[] = [
         target: 'téléphone',
         code: 'phone',
         description: 'Faites de la place et boostez les performances en triant applications, photos inutiles.',
+        imageUrl: imageUrlMobile,
+        imageAlt: 'Illustration d\'un télephone portable avec un utilisateur qui utilise sa messagerie de discussion.',
         questions: [
             {
                 id: 1,

@@ -4,5 +4,7 @@ export interface Challenge {
     target: string;
     code: string;
     description: string;
+    imageUrl: string;
+    imageAlt: string;
     questions: (MailQuestion | DesktopQuestion | MobileQuestion)[];
 }

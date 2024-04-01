@@ -21,7 +21,7 @@
   import { mobileData } from '@/data/Mobile';
   import { useRouter } from 'vue-router';
 
-  const challenges: Challenge[] = [...mailData, ...desktopData, ...mobileData];
+  const challenges: Challenge[] = [...mailData, ...mobileData, ...desktopData,];
 
   const activeChallenge = ref<Challenge | null>(null);
 

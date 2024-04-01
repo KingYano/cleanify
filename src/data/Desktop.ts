@@ -1,4 +1,5 @@
 import type {Challenge} from "@/interface/Challenge";
+import imageUrlDesktop from "@/assets/illustrations/files.svg"
 
 export const desktopData: Challenge[] = [
     {
@@ -7,6 +8,8 @@ export const desktopData: Challenge[] = [
         target: 'ordinateur',
         code: 'desktop',
         description: 'Faites de la place et boostez les performances en triant fichiers, applications et photos inutiles.',
+        imageUrl: imageUrlDesktop,
+        imageAlt: 'Illustration d\'un écran d\'ordinateur avec un utilisateur qui réalise un tri des dossiers',
         questions: [
             {
                 id: 1,

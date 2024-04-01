@@ -1,4 +1,5 @@
 import type {Challenge} from "@/interface/Challenge";
+import imageUrlMail from "@/assets/illustrations/mail.svg"
 
 export const mailData: Challenge[] = [
     {
@@ -7,6 +8,8 @@ export const mailData: Challenge[] = [
         target: 'boîte email',
         code: 'mail',
         description: 'Faites de la place et boostez les performances en triant les emails inutiles.',
+        imageUrl: imageUrlMail,
+        imageAlt: 'Illustration d\'un télephone portable avec un utilisateur qui utilise sa boîte mail.',
         questions: [
             {
                 id: 1,
