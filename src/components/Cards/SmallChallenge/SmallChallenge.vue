@@ -1,7 +1,7 @@
 <template>
   <div class="small-challenge">
     <div class="small-challenge-information">
-      <h4 class="small-challenge-information-title">Nettoyer son {{ challenge.target }}</h4>
+      <h4 class="small-challenge-information-title">Nettoyer {{ challenge?.target === 'boîte email' ? 'sa' : 'son' }} {{ challenge?.target }}</h4>
       <p class="small-challenge-information-info">{{ challenge.description }}</p>
     </div>
     <div class="small-challenge-start">
