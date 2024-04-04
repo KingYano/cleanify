@@ -1,16 +1,6 @@
-interface MobileInstruction {
-    android?: string;
-    ios?: string;
-}
-
 interface MobileSystems {
     android?: string;
     ios?: string;
-}
-
-interface DesktopInstruction {
-    windows?: string;
-    mac?: string;
 }
 
 interface DesktopSystems {
@@ -39,13 +29,13 @@ interface MailQuestion extends DevisesQuestion {
 
 interface DesktopQuestion extends DevisesQuestion {
     instruction: boolean;
-    instructionContent: DesktopInstruction | null;
-    system: DesktopSystems | null;
+    instructionContent: DesktopSystems | null;
+    system: keyof DesktopSystems | null;
 }
 
 interface MobileQuestion extends DevisesQuestion {
     instruction: boolean;
-    instructionContent: MobileInstruction | null;
-    system: MobileSystems | null;
+    instructionContent: MobileSystems | null;
+    system: keyof MobileSystems | null;
 }
 

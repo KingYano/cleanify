@@ -47,6 +47,11 @@
       border: var(--color-border-card) solid 1px;
       box-shadow: var(--border-card-shadow);
       border-radius: var(--extra-boder-radius);
+      height: 42px;
+      width: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &-date {
         text-transform: uppercase;
@@ -75,13 +80,6 @@
     &-start {
       &-button {
         font-size: var(--medium-font);
-      }
-
-      &-badge {
-
-        &-date {
-          font-size: var(--base-font);
-        }
       }
     }
   }
