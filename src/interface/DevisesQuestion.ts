@@ -8,6 +8,8 @@ interface DesktopSystems {
     mac?: string;
 }
 
+type SystemInstructions = string | MobileSystems | DesktopSystems | null;
+
 interface DevisesQuestion {
     id: number,
     questionNumber: number;
@@ -27,15 +29,15 @@ interface MailQuestion extends DevisesQuestion {
     instructionContent: string;
 }
 
-interface DesktopQuestion extends DevisesQuestion {
-    instruction: boolean;
-    instructionContent: DesktopSystems | null;
-    system: keyof DesktopSystems | null;
-}
-
 interface MobileQuestion extends DevisesQuestion {
     instruction: boolean;
-    instructionContent: MobileSystems | null;
-    system: keyof MobileSystems | null;
+    instructionContent: SystemInstructions;
+    system: MobileSystems | null;
+}
+
+interface DesktopQuestion extends DevisesQuestion {
+    instruction: boolean;
+    instructionContent: SystemInstructions;
+    system: DesktopSystems | null;
 }
 

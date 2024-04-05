@@ -3,9 +3,13 @@
     <form v-if="challenge" class="survey-form">
       <div v-for="(question, index) in challenge.questions" :key="question.id">
         <h3 v-if="isCurrentQuestion(index)" class="survey-question-title">{{ questionNumber(question) }} - {{ questionTitle(question) }}</h3>
-        <p v-if="isCurrentQuestion(index) && isMobileQuestion(question)" class="survey-question-info">{{ instructionContent(question) }}</p>
+        <p v-if="isCurrentQuestion(index) && question.instruction" class="survey-question-info">{{ currentQuestionInstructions }}</p>
         <div v-if="isCurrentQuestion(index) && question.response">
-          <button-response :response-content="question.responseContent" :name="String(question.id)" @update:os="os = $event"></button-response>
+          <button-response
+              :response-content="question.responseContent"
+              :name="String(question.id)"
+              @update:os="os = $event as string"
+          ></button-response>
         </div>
         <div v-if="isCurrentQuestion(index) && question.textField">
           <input-response></input-response>
@@ -17,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import {ref, computed, watch} from 'vue';
 import type { Challenge } from '@/interface/Challenge';
 import ButtonResponse from "@/components/Surveys/TypeResponse/ButtonResponse.vue";
 import InputResponse from "@/components/Surveys/TypeResponse/InputResponse.vue";
@@ -27,7 +31,13 @@ const props = defineProps<{
 }>();
 
 const currentQuestionIndex = ref(0);
-const os = ref<keyof MobileSystems | null>(null);
+const os = ref<string | null>(null);
+
+watch(os, (newValue) => {
+  console.log('os updated:', newValue);
+});
+
+console.log('challenge:', props.challenge);
 
 const isCurrentQuestion = (index: number) => index === currentQuestionIndex.value;
 
@@ -35,20 +45,25 @@ const questionNumber = (question: MailQuestion | DesktopQuestion | MobileQuestio
 
 const questionTitle = (question: MailQuestion | DesktopQuestion | MobileQuestion) => question.title;
 
-const isMobileQuestion = (question: MailQuestion | DesktopQuestion | MobileQuestion): question is MobileQuestion => {
-  return (question as MobileQuestion).instructionContent?.android !== undefined || (question as MobileQuestion).instructionContent?.ios !== undefined;
-}
-
-const instructionContent = (question: MobileQuestion) => {
-  if (os.value && question.instructionContent) {
-    return question.instructionContent[os.value];
-  }
-  return '';
-};
-
 
 const buttonLabel = computed(() => {
   return currentQuestionIndex.value === props.challenge.questions.length - 1 ? 'Terminer' : 'Suivant';
+});
+
+const currentQuestionInstructions = computed(() => {
+  const currentQuestion = props.challenge.questions[currentQuestionIndex.value];
+  if (currentQuestion.instruction && os.value && currentQuestion.instructionContent !== null) {
+    const instructionContent = currentQuestion.instructionContent as MobileSystems | DesktopSystems;
+    let systemInstructions: string = '';
+
+    if (os.value === 'A' && 'android' in instructionContent) {
+      systemInstructions = instructionContent.android || '';
+    } else if (os.value === 'B' && 'ios' in instructionContent) {
+      systemInstructions = instructionContent.ios || '';
+    }
+    return systemInstructions;
+  }
+  return '';
 });
 
 function nextQuestion() {

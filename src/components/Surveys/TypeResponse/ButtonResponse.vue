@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from "vue";
+import {ref, watch} from "vue";
 
 const props = defineProps<{
   responseContent: { [key: string]: string };
@@ -16,6 +16,10 @@ const props = defineProps<{
 }>();
 
 const selectedOption = ref<string | null>(null);
+
+watch(selectedOption, (newValue) => {
+  console.log('selectedOption updated:', newValue);
+});
 
 const updateOS = () => {
   if (selectedOption.value) {
