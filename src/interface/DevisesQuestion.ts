@@ -15,7 +15,7 @@ interface DevisesQuestion {
     questionNumber: number;
     title: string;
     response: boolean;
-    responseContent: { A: string; B: string } | null;
+    responseContent: { [key: string]: string } | null;
     textField: boolean;
     moreQuestion: boolean;
     moreQuestionContent: string;

@@ -30,7 +30,7 @@ export const mailData: Challenge[] = [
             {
                 id: 2,
                 questionNumber: 2,
-                title: "Filtrer vos emails. Pour éliminer des emails en masse, le filtre est votre meilleur allié. Utilisez les filtres disponibles en cliquant sur la barre de recherche située en haut de votre boîte mail et sur l'icône de filtre. Vous pouvez filtrer vos emails par",
+                title: "Filtrer vos emails. Pour éliminer des emails en masse, le filtre est votre meilleur allié. Utilisez les filtres disponibles en cliquant sur la barre de recherche située en haut de votre boîte mail et sur l'icône de filtre. Vous pouvez filtrer vos emails par :",
                 response: false,
                 responseContent: null,
                 textField: false,

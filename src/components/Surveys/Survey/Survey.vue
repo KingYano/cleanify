@@ -6,6 +6,7 @@
         <p v-if="isCurrentQuestion(index) && question.instruction" class="survey-question-info">{{ currentQuestionInstructions }}</p>
         <div v-if="isCurrentQuestion(index) && question.response">
           <button-response
+              v-if="question.responseContent !== null"
               :response-content="question.responseContent"
               :name="String(question.id)"
               @update:os="os = $event as string"
@@ -21,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref, computed, watch} from 'vue';
+import { ref, computed } from 'vue';
 import type { Challenge } from '@/interface/Challenge';
 import ButtonResponse from "@/components/Surveys/TypeResponse/ButtonResponse.vue";
 import InputResponse from "@/components/Surveys/TypeResponse/InputResponse.vue";
@@ -33,35 +34,54 @@ const props = defineProps<{
 const currentQuestionIndex = ref(0);
 const os = ref<string | null>(null);
 
-watch(os, (newValue) => {
-  console.log('os updated:', newValue);
-});
-
-console.log('challenge:', props.challenge);
-
 const isCurrentQuestion = (index: number) => index === currentQuestionIndex.value;
 
 const questionNumber = (question: MailQuestion | DesktopQuestion | MobileQuestion) => question.questionNumber;
 
 const questionTitle = (question: MailQuestion | DesktopQuestion | MobileQuestion) => question.title;
 
-
 const buttonLabel = computed(() => {
   return currentQuestionIndex.value === props.challenge.questions.length - 1 ? 'Terminer' : 'Suivant';
 });
 
+type SystemType = keyof MobileSystems | keyof DesktopSystems;
+
+const getSystemByOSValue = (osValue: string): SystemType | null => {
+  if (props.challenge.code === 'phone') {
+    return osValue === 'A' ? 'android' : 'ios';
+  } else if (props.challenge.code === 'desktop') {
+    return osValue === 'A' ? 'windows' : 'mac';
+  }
+  return null;
+};
+
+const getInstructionType = (): string => {
+  return props.challenge.code === 'phone' ? 'MobileSystems' : 'DesktopSystems';
+};
+
+const getInstructionContent = (system: SystemType): SystemInstructions => {
+  const instructionType = getInstructionType();
+  const instructionContent = props.challenge.questions[currentQuestionIndex.value].instructionContent as Record<string, string>;
+
+  if (instructionType === 'MobileSystems') {
+    return instructionContent[system as keyof MobileSystems] || null;
+  } else {
+    return instructionContent[system as keyof DesktopSystems] || null;
+  }
+};
+
 const currentQuestionInstructions = computed(() => {
   const currentQuestion = props.challenge.questions[currentQuestionIndex.value];
-  if (currentQuestion.instruction && os.value && currentQuestion.instructionContent !== null) {
-    const instructionContent = currentQuestion.instructionContent as MobileSystems | DesktopSystems;
-    let systemInstructions: string = '';
-
-    if (os.value === 'A' && 'android' in instructionContent) {
-      systemInstructions = instructionContent.android || '';
-    } else if (os.value === 'B' && 'ios' in instructionContent) {
-      systemInstructions = instructionContent.ios || '';
+  if (currentQuestion.instruction) {
+    if (typeof currentQuestion.instructionContent === 'string') {
+      return currentQuestion.instructionContent;
+    } else if (os.value && currentQuestion.instructionContent !== null) {
+      const system = getSystemByOSValue(os.value);
+      if (system) {
+        const instructionContent = getInstructionContent(system);
+        return instructionContent || '';
+      }
     }
-    return systemInstructions;
   }
   return '';
 });
