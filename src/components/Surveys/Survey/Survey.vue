@@ -22,79 +22,79 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import type { Challenge } from '@/interface/Challenge';
-import ButtonResponse from "@/components/Surveys/TypeResponse/ButtonResponse.vue";
-import InputResponse from "@/components/Surveys/TypeResponse/InputResponse.vue";
+  import { ref, computed } from 'vue';
+  import type { Challenge } from '@/interface/Challenge';
+  import ButtonResponse from "@/components/Surveys/TypeResponse/ButtonResponse.vue";
+  import InputResponse from "@/components/Surveys/TypeResponse/InputResponse.vue";
 
-const props = defineProps<{
-  challenge: Challenge;
-}>();
+  const props = defineProps<{
+    challenge: Challenge;
+  }>();
 
-const currentQuestionIndex = ref(0);
-const os = ref<string | null>(null);
+  const currentQuestionIndex = ref(0);
+  const os = ref<string | null>(null);
 
-const isCurrentQuestion = (index: number) => index === currentQuestionIndex.value;
+  const isCurrentQuestion = (index: number) => index === currentQuestionIndex.value;
 
-const questionNumber = (question: MailQuestion | DesktopQuestion | MobileQuestion) => question.questionNumber;
+  const questionNumber = (question: MailQuestion | DesktopQuestion | MobileQuestion) => question.questionNumber;
 
-const questionTitle = (question: MailQuestion | DesktopQuestion | MobileQuestion) => question.title;
+  const questionTitle = (question: MailQuestion | DesktopQuestion | MobileQuestion) => question.title;
 
-const buttonLabel = computed(() => {
-  return currentQuestionIndex.value === props.challenge.questions.length - 1 ? 'Terminer' : 'Suivant';
-});
+  const buttonLabel = computed(() => {
+    return currentQuestionIndex.value === props.challenge.questions.length - 1 ? 'Terminer' : 'Suivant';
+  });
 
-type SystemType = keyof MobileSystems | keyof DesktopSystems;
+  type SystemType = keyof MobileSystems | keyof DesktopSystems;
 
-const getSystemByOSValue = (osValue: string): SystemType | null => {
-  if (props.challenge.code === 'phone') {
-    return osValue === 'A' ? 'android' : 'ios';
-  } else if (props.challenge.code === 'desktop') {
-    return osValue === 'A' ? 'windows' : 'mac';
-  }
-  return null;
-};
+  const getSystemByOSValue = (osValue: string): SystemType | null => {
+    if (props.challenge.code === 'phone') {
+      return osValue === 'A' ? 'android' : 'ios';
+    } else if (props.challenge.code === 'desktop') {
+      return osValue === 'A' ? 'windows' : 'mac';
+    }
+    return null;
+  };
 
-const getInstructionType = (): string => {
-  return props.challenge.code === 'phone' ? 'MobileSystems' : 'DesktopSystems';
-};
+  const getInstructionType = (): string => {
+    return props.challenge.code === 'phone' ? 'MobileSystems' : 'DesktopSystems';
+  };
 
-const getInstructionContent = (system: SystemType): SystemInstructions => {
-  const instructionType = getInstructionType();
-  const instructionContent = props.challenge.questions[currentQuestionIndex.value].instructionContent as Record<string, string>;
+  const getInstructionContent = (system: SystemType): SystemInstructions => {
+    const instructionType = getInstructionType();
+    const instructionContent = props.challenge.questions[currentQuestionIndex.value].instructionContent as Record<string, string>;
 
-  if (instructionType === 'MobileSystems') {
-    return instructionContent[system as keyof MobileSystems] || null;
-  } else {
-    return instructionContent[system as keyof DesktopSystems] || null;
-  }
-};
+    if (instructionType === 'MobileSystems') {
+      return instructionContent[system as keyof MobileSystems] || null;
+    } else {
+      return instructionContent[system as keyof DesktopSystems] || null;
+    }
+  };
 
-const currentQuestionInstructions = computed(() => {
-  const currentQuestion = props.challenge.questions[currentQuestionIndex.value];
-  if (currentQuestion.instruction) {
-    if (typeof currentQuestion.instructionContent === 'string') {
-      return currentQuestion.instructionContent;
-    } else if (os.value && currentQuestion.instructionContent !== null) {
-      const system = getSystemByOSValue(os.value);
-      if (system) {
-        const instructionContent = getInstructionContent(system);
-        return instructionContent || '';
+  const currentQuestionInstructions = computed(() => {
+    const currentQuestion = props.challenge.questions[currentQuestionIndex.value];
+    if (currentQuestion.instruction) {
+      if (typeof currentQuestion.instructionContent === 'string') {
+        return currentQuestion.instructionContent;
+      } else if (os.value && currentQuestion.instructionContent !== null) {
+        const system = getSystemByOSValue(os.value);
+        if (system) {
+          const instructionContent = getInstructionContent(system);
+          return instructionContent || '';
+        }
       }
     }
-  }
-  return '';
-});
+    return '';
+  });
 
-function nextQuestion() {
-  if (currentQuestionIndex.value < props.challenge.questions.length - 1) {
-    currentQuestionIndex.value++;
-  } else {
-    // TODO: handle form submission
+  function nextQuestion() {
+    if (currentQuestionIndex.value < props.challenge.questions.length - 1) {
+      currentQuestionIndex.value++;
+    } else {
+      // TODO: handle form submission
+    }
   }
-}
 </script>
 
 <style lang="scss">
-@import "Survey";
+  @import "Survey";
 </style>
