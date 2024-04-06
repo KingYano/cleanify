@@ -1,9 +1,9 @@
 <template>
   <div class="survey-rules">
     <div class="survey-rules-header">
+      <button class="survey-rules-header-back-button" @click="goBack">Retour en arrière</button>
       <h3 class="survey-rules-header-title">Jour {{ challenge?.day }}/3 du Digital Clean Up Challenge</h3>
       <p class="survey-rules-header-info">Nettoyer {{ challenge?.target === 'boîte email' ? 'sa' : 'son' }} {{ challenge?.target }}</p>
-
     </div>
     <div class="survey-rules-split">
       <div class="survey-rules-split-left">
@@ -26,20 +26,25 @@
 </template>
 
 <script setup lang="ts">
-  import {computed, ref} from 'vue';
-  import { useRoute } from 'vue-router';
+  import { computed, ref } from 'vue';
+  import { useRoute, useRouter } from 'vue-router';
   import type { Challenge } from '@/interface/Challenge';
   import { mailData } from '@/data/Mail';
   import { desktopData } from '@/data/Desktop';
   import { mobileData } from '@/data/Mobile';
 
   const route = useRoute();
+  const router = useRouter();
 
-  const challenges = ref<Challenge[]>([...mailData, ...desktopData, ...mobileData]);
+  const goBack = () => {
+    router.push('/');
+  };
+
+  const challengeData = ref<Challenge[]>([...mailData, ...desktopData, ...mobileData]);
 
   const challenge = computed(() => {
     const code = route.params.code as string;
-    return challenges.value.find(challenge => challenge.code === code);
+    return challengeData.value.find(challenge => challenge.code === code);
   });
 
   const emit = defineEmits<{(e: 'next', challenge?: Challenge): void}>();
