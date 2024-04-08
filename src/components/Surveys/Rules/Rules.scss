@@ -2,24 +2,41 @@
   height: calc(100% - 103px);
 
   &-header {
-    padding-top: 54px;
+    padding-top: 28px;
     padding-bottom: 24px;
-    text-align: center;
 
-    &-title {
-      font-size: var(--normal-font);
-      font-weight: var(--extra-large-font-weight);
+    &-back {
+      margin: auto;
+      margin-left: 10px;
+      padding-bottom: 12px;
+
+      &-button {
+        font-size: var(--base-font);
+        font-weight: var(--large-font-weight);
+        background-color: var(--color-button);
+        border-radius: var(--normal-border-radius);
+        border: unset;
+      }
     }
 
     &-info {
-      font-weight: var(--large-font-weight);
+      flex-grow: 1;
+      text-align: center;
+
+      &-title {
+        font-size: var(--normal-font);
+        font-weight: var(--extra-large-font-weight);
+      }
+
+      &-subtitle {
+        font-weight: var(--large-font-weight);
+      }
     }
   }
 
   &-split {
     &-left {
-      display: flex;
-      justify-content: center;
+      text-align: center;
       padding-top: 28px;
       padding-bottom: 56px;
 
@@ -69,12 +86,20 @@
     height: calc(100vh - 103px);
 
     &-header {
-      &-title {
-        font-size: var(--medium-font);
+      &-back {
+        &-button {
+          font-size: var(--medium-font);
+        }
       }
 
       &-info {
-        font-size: var(--normal-font);
+        &-title {
+          font-size: var(--medium-font);
+        }
+
+        &-subtitle {
+          font-size: var(--normal-font);
+        }
       }
     }
 
@@ -110,12 +135,14 @@
     height: calc(100vh - 103px);
 
     &-header {
-      &-title {
-        font-size: var(--medium-large-font);
-      }
-
       &-info {
-        font-size: var(--medium-font);
+        &-title {
+          font-size: var(--medium-large-font);
+        }
+
+        &-subtitle {
+          font-size: var(--medium-font);
+        }
       }
     }
 
@@ -147,12 +174,14 @@
     height: calc(100vh - 103px);
 
     &-header {
-      &-title {
-        font-size: var(--x-medium-large-font);
-      }
-
       &-info {
-        font-size: var(--medium-large-font);
+        &-title {
+          font-size: var(--x-medium-large-font);
+        }
+
+        &-subtitle {
+          font-size: var(--medium-large-font);
+        }
       }
     }
 

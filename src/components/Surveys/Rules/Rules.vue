@@ -1,13 +1,18 @@
 <template>
   <div class="survey-rules">
     <div class="survey-rules-header">
-      <button class="survey-rules-header-back-button" @click="goBack">Retour en arrière</button>
-      <h3 class="survey-rules-header-title">Jour {{ challenge?.day }}/3 du Digital Clean Up Challenge</h3>
-      <p class="survey-rules-header-info">Nettoyer {{ challenge?.target === 'boîte email' ? 'sa' : 'son' }} {{ challenge?.target }}</p>
+      <div class="survey-rules-header-back">
+        <button class="survey-rules-header-back-button" @click="goBack"><i class="ri-arrow-left-line"></i>Retour</button>
+      </div>
+      <div class="survey-rules-header-info">
+        <h3 class="survey-rules-header-info-title">Jour {{ challenge?.day }}/3 du Digital Clean Up Challenge</h3>
+        <p class="survey-rules-header-info-subtitle">Nettoyer {{ challenge?.target === 'boîte email' ? 'sa' : 'son' }} {{ challenge?.target }}</p>
+
+      </div>
     </div>
     <div class="survey-rules-split">
       <div class="survey-rules-split-left">
-        <img :src="challenge?.imageUrl" alt="">
+        <img :src="challenge?.imageUrl" :alt="challenge?.imageAlt">
       </div>
       <div class="survey-rules-split-right">
         <div>
