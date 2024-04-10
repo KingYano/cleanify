@@ -4,11 +4,32 @@
     padding: 52px 32px 0;
 
     &-title {
-
+      font-size: var(--normal-font);
+      font-weight: var(--large-font-weight);
+      padding-bottom: 26px;
     }
 
     &-paragraph {
+      font-size: var(--base-font);
+      padding-bottom: 28px;
 
+      &-instruction {
+        font-weight: var(--normal-font-weight);
+        padding-bottom: 32px;
+      }
+
+      &-question {
+        font-weight: var(--large-font-weight);
+        padding-bottom: 14px;
+      }
+
+      &-question-info {
+        font-weight: var(--normal-font-weight);
+      }
+    }
+
+    &-buttom, &-input {
+      padding-bottom: 32px;
     }
 
     &-buttom {
@@ -17,6 +38,47 @@
 
     &-input {
 
+    }
+
+    &-commands {
+      display: flex;
+      padding: 12px 32px;
+
+      &-button-send {
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+
+        button {
+          cursor: pointer;
+          padding: 8px 22px;
+          font-size: var(--normal-font);
+          font-weight: var(--extra-large-font-weight);
+          color: var(--first-color-950);
+          background-color: var(--color-button);
+          border-radius: var(--normal-border-radius);
+          border: unset;
+        }
+      }
+
+      &-buttons-navigation {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+
+        button {
+          cursor: pointer;
+          padding: 2px 4px;
+          font-size: var(--normal-font);
+          font-weight: var(--extra-large-font-weight);
+          color: var(--first-color-950);
+          background-color: var(--color-button);
+          border-radius: var(--normal-border-radius);
+          border: unset;
+        }
+      }
     }
   }
 }

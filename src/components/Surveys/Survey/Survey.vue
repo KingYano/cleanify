@@ -7,9 +7,9 @@
         <div class="survey-form-paragraph">
           <p v-if="isCurrentQuestion(index) && question.instruction" class="survey-form-paragraph-instruction">
             {{ currentQuestionInstructions }}</p>
-          <p style="color: red" v-if="isCurrentQuestion(index) && question.moreQuestion" class="survey-form-question">
+          <p v-if="isCurrentQuestion(index) && question.moreQuestion" class="survey-form-paragraph-question">
             {{ question.moreQuestionContent }}</p>
-          <p style="color: blue" v-if="isCurrentQuestion(index) && question.textInfo"
+          <p v-if="isCurrentQuestion(index) && question.textInfo"
              class="survey-form-paragraph-question-info">{{ question.textInfoContent }}</p>
           <div v-if="isCurrentQuestion(index) && question.response" class="survey-form-button">
             <button-response
@@ -24,28 +24,30 @@
           </div>
         </div>
       </div>
+      <div class="survey-form-commands">
+        <div class="survey-form-commands-button-send">
+          <button @click="nextQuestion" class="survey-button-submit" type="button">{{ buttonLabel }}</button>
+        </div>
+        <div class="survey-form-commands-buttons-navigation">
+          <button
+              @click="previousQuestion"
+              class="survey-buttons-back"
+              type="button"
+              v-show="currentQuestionIndex > 0"
+          >
+            <i class="ri-arrow-up-line"></i>
+          </button>
+          <button
+              @click="nextQuestion"
+              class="survey-buttons-next"
+              type="button"
+              v-show="currentQuestionIndex < props.challenge.questions.length - 1"
+          >
+            <i class="ri-arrow-down-line"></i>
+          </button>
+        </div>
+      </div>
     </form>
-    <div class="survey-form-button">
-      <button @click="nextQuestion" class="survey-form-button-submit" type="button">{{ buttonLabel }}</button>
-    </div>
-    <div class="survey-buttons">
-      <button
-          @click="previousQuestion"
-          class="survey-buttons-back"
-          type="button"
-          v-show="currentQuestionIndex > 0"
-      >
-        <i class="ri-arrow-up-line"></i>
-      </button>
-      <button
-          @click="nextQuestion"
-          class="survey-buttons-next"
-          type="button"
-          v-show="currentQuestionIndex < props.challenge.questions.length - 1"
-      >
-        <i class="ri-arrow-down-line"></i>
-      </button>
-    </div>
   </div>
 </template>
 
