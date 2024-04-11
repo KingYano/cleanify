@@ -1,7 +1,7 @@
 <template>
   <div class="input-response" >
-    <label for="name"></label>
-    <input type="text" name="name" id="name" placeholder="name" required v-model="inputValue" @input="updateInput">
+    <label class="input-response-label" for="name"></label>
+    <input class="input-response-input" type="text" name="name" id="name" placeholder="name" required v-model="inputValue" @input="updateInput">
   </div>
 </template>
 
@@ -21,5 +21,5 @@
 </script>
 
 <style lang="scss">
-
+  @import "InputResponse";
 </style>

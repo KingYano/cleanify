@@ -1,8 +1,8 @@
 <template>
   <div class="button-response">
-    <div v-for="(response, name) in props.responseContent" :key="name">
-      <input type="radio" :id="name.toString()" :value="name" v-model="selectedOption" @change="updateOS">
-      <label :for="name.toString()">{{ response }}</label>
+    <div class="button-response-list" v-for="(response, name) in props.responseContent" :key="name">
+      <input class="button-response-list-input" type="radio" :id="name.toString()" :value="name" v-model="selectedOption" @change="updateOS">
+      <label class="button-response-list-label" :for="name.toString()">{{ response }}</label>
     </div>
   </div>
 </template>
@@ -25,3 +25,7 @@
     (e: 'update:os', value: string | null): void;
   }>();
 </script>
+
+<style lang="scss">
+  @import "ButtonResponse";
+</style>

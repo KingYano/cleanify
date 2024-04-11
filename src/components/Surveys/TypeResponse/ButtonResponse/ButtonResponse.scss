@@ -1,0 +1,32 @@
+.button-response {
+  &-list {
+    margin-bottom: 20px;
+    padding: 10px;
+    background: var(--color-large-background-card);
+    border: var(--color-border-card) solid 1px;
+    box-shadow: var(--border-card-shadow);
+    border-radius: var(--small-border-radius);
+
+    &-label {
+      font-weight: var(--normal-font-weight);
+    }
+
+    &-input {
+      padding: 10px;
+      margin-right: 15px;
+      background: var(--color-large-background-card);
+      border: var(--color-border-card) solid 1px;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .button-response {
+    width: 50%;
+    &-list {
+      &-label {
+        font-weight: var(--normal-font-weight);
+      }
+    }
+  }
+}

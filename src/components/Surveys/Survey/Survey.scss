@@ -1,5 +1,5 @@
 .survey {
-  height:   calc(100vh - 61px);
+  height: calc(100% - 61px);
   &-form {
     padding: 52px 32px 0;
 
@@ -25,15 +25,17 @@
 
       &-question-info {
         font-weight: var(--normal-font-weight);
+        padding-bottom: 28px;
       }
     }
 
-    &-buttom, &-input {
+    &-button, &-input {
       padding-bottom: 32px;
     }
 
-    &-buttom {
-
+    &-button {
+      display: flex;
+      justify-content: center;
     }
 
     &-input {

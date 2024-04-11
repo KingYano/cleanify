@@ -54,8 +54,8 @@
 <script setup lang="ts">
   import {ref, computed} from 'vue';
   import type {Challenge} from '@/interface/Challenge';
-  import ButtonResponse from "@/components/Surveys/TypeResponse/ButtonResponse.vue";
-  import InputResponse from "@/components/Surveys/TypeResponse/InputResponse.vue";
+  import ButtonResponse from "@/components/Surveys/TypeResponse/ButtonResponse/ButtonResponse.vue";
+  import InputResponse from "@/components/Surveys/TypeResponse/InputResponse/InputResponse.vue";
 
   const props = defineProps<{
     challenge: Challenge;
