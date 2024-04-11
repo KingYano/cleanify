@@ -83,7 +83,7 @@ export const mailData: Challenge[] = [
                 responseContent: null,
                 textField: true,
                 instruction: true,
-                instructionContent: "ous pouvez limiter ces notifications dans les paramètres de chaque application.",
+                instructionContent: "Vous pouvez limiter ces notifications dans les paramètres de chaque application.",
                 moreQuestion: false,
                 moreQuestionContent: "",
                 textInfo: false,

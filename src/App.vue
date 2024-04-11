@@ -41,7 +41,7 @@
   </script>
 
   <style scoped>
-    @media (min-width: 1024px) {
+    @media (min-width: 1280px) {
 
     }
   </style>

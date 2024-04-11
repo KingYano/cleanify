@@ -12,6 +12,7 @@
 
   const updateInput = (event: Event) => {
     const target = event.target as HTMLInputElement;
+    inputValue.value = target.value;
     emits('update:modelValue', target.value);
   };
 
