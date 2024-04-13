@@ -1,7 +1,7 @@
 <template>
   <div class="survey">
     <form class="survey-form" @keydown.enter.prevent>
-      <div class="survey-form-item" v-for="(question, index) in currentQuestions" :key="question.id">
+      <div class="survey-form-item" v-for="(question) in currentQuestions" :key="question.id">
         <h3 class="survey-form-title">{{ questionNumber(question) }} - {{ questionTitle(question) }}</h3>
         <div class="survey-form-paragraph">
           <p v-if="question.instruction" class="survey-form-paragraph-instruction">
@@ -19,7 +19,13 @@
             ></button-response>
           </div>
           <div v-if="question.textField" class="survey-form-input">
-            <input-response></input-response>
+            <input-response v-model:modelValue="inputValue" @update:isValid="isValid = $event"></input-response>
+            <div v-if="!isValid && String(inputValue).length === 0" class="survey-form-error">
+              Veuillez remplir le champ de formulaire.
+            </div>
+            <div v-if="!isValid && String(inputValue).length > 0" class="survey-form-error">
+              {{ errorMessage }}
+            </div>
           </div>
         </div>
       </div>
@@ -51,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref, computed} from 'vue';
+import {ref, computed, watch} from 'vue';
 import type {Challenge} from '@/interface/Challenge';
 import ButtonResponse from "@/components/Surveys/TypeResponse/ButtonResponse/ButtonResponse.vue";
 import InputResponse from "@/components/Surveys/TypeResponse/InputResponse/InputResponse.vue";
@@ -63,11 +69,21 @@ const props = defineProps<{
 const currentQuestionIndex = ref(0);
 const os = ref<string | null>(null);
 const answers = ref<Record<string, string | null>>({});
+const inputValue = ref<number | null>(null);
+const isValid = ref(true);
+const errorMessage = ref('');
 
 const currentQuestions = computed(() => {
   return props.challenge.questions.filter((_, index) => index === currentQuestionIndex.value);
 });
 
+const isValidInput = computed(() => {
+  const currentQuestion = props.challenge.questions[currentQuestionIndex.value];
+  if (currentQuestion.textField) {
+    return inputValue.value != null && inputValue.value.toString() !== '' && !isNaN(inputValue.value);
+  }
+  return true;
+});
 
 const questionNumber = (question: MailQuestion | DesktopQuestion | MobileQuestion) => question.questionNumber;
 
@@ -126,13 +142,40 @@ function previousQuestion() {
 }
 
 function nextQuestion() {
-  if (currentQuestionIndex.value < props.challenge.questions.length - 1) {
-    answers.value[props.challenge.questions[currentQuestionIndex.value].id] = os.value;
-    currentQuestionIndex.value++;
+  console.log('Attempting to move to next question...');
+  console.log(`Current Input Value: ${inputValue.value}, Is Valid: ${isValidInput.value}`);
+
+  if (isValidInput.value) {
+    console.log('Input is valid, moving to next question...');
+    isValid.value = true;
+    if (currentQuestionIndex.value < props.challenge.questions.length - 1) {
+      currentQuestionIndex.value++;
+      inputValue.value = null;
+      errorMessage.value = '';
+      console.log(`Moved to question index: ${currentQuestionIndex.value}`);
+    } else {
+      // TODO: handle form submission
+      console.log('Handling form submission...');
+    }
   } else {
-    // TODO: handle form submission
+    console.log('Input is invalid, cannot move to next question.');
+    isValid.value = false;
+    errorMessage.value = 'Ooops! Vous devez entrer une valeur.';
   }
 }
+
+watch(inputValue, (newValue) => {
+  console.log(`Input Value changed: ${newValue}`);
+});
+
+watch(errorMessage, (newValue) => {
+  console.log(`Error Message updated: ${newValue}`);
+});
+
+watch(currentQuestionIndex, (newValue) => {
+  inputValue.value = null;
+  errorMessage.value = '';
+});
 </script>
 
 <style lang="scss">
