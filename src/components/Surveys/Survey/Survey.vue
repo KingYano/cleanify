@@ -19,10 +19,13 @@
             ></button-response>
           </div>
           <div v-if="currentQuestion.textField" class="survey-form-input">
-            <input-response v-model:modelValue="inputValue" @update:isValid="handleValidation"></input-response>
-            <div v-if="!isValid" class="survey-form-error">
-              {{ errorMessage }}
-            </div>
+            <input-response
+                v-model:modelValue="inputValue"
+                @update:isValid="handleValidation"
+            ></input-response>
+          </div>
+          <div v-if="showMessage" class="survey-form-error">
+            {{ errorMessage }}
           </div>
         </div>
       </div>
@@ -68,13 +71,22 @@
   const answers = ref<Record<string, string | null>>({});
   const inputValue = ref<string | null>(null);
   const isValid = ref(true);
+  const showMessage = ref(false);
   const errorMessage = ref('');
-
 
   const currentQuestion = computed(() => {
     return props.challenge.questions[currentQuestionIndex.value];
   });
 
+  const showMessageError = (msg: string) => {
+    errorMessage.value = msg;
+    showMessage.value = true;
+  };
+
+  function resetError() {
+    errorMessage.value = '';
+    showMessage.value = false;
+  }
 
   const questionNumber = (question: MailQuestion | DesktopQuestion | MobileQuestion) => question.questionNumber;
 
@@ -147,15 +159,14 @@
     // Vérifiez si la question requiert un champ de texte et si celui-ci est valide
     if (currentQuestion.value.textField && !isValid.value) {
       console.log('Input is invalid, cannot move to next question.');
-      errorMessage.value = 'Ooops! Vous devez entrer une valeur valide.';
-      allowNavigation = false;  // Bloquer la navigation si le champ n'est pas valide
+      showMessageError('Ooops! Vous devez entrer une valeur valide.');
+      allowNavigation = false;
     }
 
     // Vérifiez si la question requiert une réponse de bouton radio et si une sélection a été faite
     if (currentQuestion.value.response && !selectionButton.value) {
-      console.log('No selection made, cannot move to next question.');
-      errorMessage.value = 'Vous devez faire une sélection.';
-      allowNavigation = false;  // Bloquer la navigation si aucune sélection n'est faite
+      showMessageError('Vous devez faire une sélection.');
+      allowNavigation = false;
     }
 
     // Si la question ne requiert ni champ de texte ni bouton radio, ou si les conditions sont remplies
@@ -163,7 +174,7 @@
       if (currentQuestionIndex.value < props.challenge.questions.length - 1) {
         currentQuestionIndex.value++;
         inputValue.value = null;  // Réinitialiser pour la prochaine question
-        errorMessage.value = '';  // Effacer le message d'erreur
+        resetError();   // Effacer le message d'erreur
         selectionButton.value = null;  // Réinitialiser la sélection pour la prochaine question
         console.log(`Moved to question index: ${currentQuestionIndex.value}`);
       } else {
