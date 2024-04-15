@@ -20,7 +20,8 @@
           </div>
           <div v-if="currentQuestion.textField" class="survey-form-input">
             <input-response
-                @updateInput="inputValue = $event"
+                :model-value="inputValue"
+                @update:model-value="inputValue = $event"
             ></input-response>
           </div>
           <div v-if="showMessage" class="survey-form-error">
@@ -168,6 +169,7 @@
       if (currentQuestionIndex.value < props.challenge.questions.length - 1) {
         currentQuestionIndex.value++;
         resetError();
+        inputValue.value = "";
         selectionButton.value = null;
       } else {
         console.log('Handling form submission...');

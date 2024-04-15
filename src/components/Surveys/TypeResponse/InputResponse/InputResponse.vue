@@ -7,23 +7,26 @@
            id="name"
            placeholder="Seuls les chiffres sont autorisés."
            required
-           v-model="inputValue"
+           :value="modelValue"
+           @input="updateInput"
     >
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineEmits, ref, watch } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 
-const emit = defineEmits(['updateInput'])
+const props = defineProps<{
+  modelValue: string
+}>()
 
-const inputValue = ref('')
+const emit = defineEmits(['update:modelValue'])
 
-watch(inputValue, (newValue) => {
-  emit('updateInput', newValue)
-})
+const updateInput = (event: Event) => {
+  const target = event.target as HTMLInputElement
+  emit('update:modelValue', target.value)
+}
 </script>
-
 
 <style lang="scss">
   @import "InputResponse";
