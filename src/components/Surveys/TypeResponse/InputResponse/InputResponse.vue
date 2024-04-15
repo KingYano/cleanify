@@ -1,37 +1,29 @@
 <template>
   <div class="input-response">
-    <label class="input-response-label" for="name"></label>
+    <label class="input-response-label" for="name">Name</label>
     <input class="input-response-input"
            type="text"
            name="name"
            id="name"
-           placeholder="name"
+           placeholder="Seuls les chiffres sont autorisés."
            required
            v-model="inputValue"
-           @input="validateInput"
     >
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { defineEmits, ref, watch } from 'vue'
 
-const inputValue = ref('');
-const emits = defineEmits<{
-  (e: 'update:modelValue', value: string): void;
-  (e: 'update:isValid', isValid: boolean, errorMessage: string): void;
-}>();
+const emit = defineEmits(['updateInput'])
 
-const validateInput = () => {
-  const numericValue = inputValue.value.replace(/\D/g, '');
-  const isValid = numericValue.trim().length > 0;
-  const errorMessage = isValid ? '' : "Veuillez remplir le champ de formulaire avec des chiffres uniquement.";
+const inputValue = ref('')
 
-  emits('update:modelValue', numericValue);
-  emits('update:isValid', isValid, errorMessage);
-  inputValue.value = numericValue;
-};
+watch(inputValue, (newValue) => {
+  emit('updateInput', newValue)
+})
 </script>
+
 
 <style lang="scss">
   @import "InputResponse";

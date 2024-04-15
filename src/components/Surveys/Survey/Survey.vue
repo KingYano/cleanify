@@ -20,8 +20,7 @@
           </div>
           <div v-if="currentQuestion.textField" class="survey-form-input">
             <input-response
-                v-model:modelValue="inputValue"
-                @update:isValid="handleValidation"
+                @updateInput="inputValue = $event"
             ></input-response>
           </div>
           <div v-if="showMessage" class="survey-form-error">
@@ -57,7 +56,7 @@
 </template>
 
 <script setup lang="ts">
-  import {ref, computed, watch} from 'vue';
+  import {ref, computed} from 'vue';
   import type {Challenge} from '@/interface/Challenge';
   import ButtonResponse from "@/components/Surveys/TypeResponse/ButtonResponse/ButtonResponse.vue";
   import InputResponse from "@/components/Surveys/TypeResponse/InputResponse/InputResponse.vue";
@@ -69,10 +68,9 @@
   const currentQuestionIndex = ref(0);
   const selectionButton = ref<string | null>(null);
   const answers = ref<Record<string, string | null>>({});
-  const inputValue = ref<string | null>(null);
-  const isValid = ref(true);
   const showMessage = ref(false);
   const errorMessage = ref('');
+  const inputValue = ref('');
 
   const currentQuestion = computed(() => {
     return props.challenge.questions[currentQuestionIndex.value];
@@ -137,10 +135,6 @@
     return '';
   };
 
-  const handleValidation = (newIsValid: boolean, newErrorMessage: string) => {
-    isValid.value = newIsValid;
-    errorMessage.value = newErrorMessage;
-  };
 
   function previousQuestion() {
     if (currentQuestionIndex.value > 0) {
@@ -150,22 +144,22 @@
   }
 
   function nextQuestion() {
-    console.log('Attempting to move to next question...');
-    console.log('Current question details:', currentQuestion.value);
-
-    // Déterminer si la navigation est permise en fonction du type de question
-    let allowNavigation = true;  // Présumer que la navigation est permise
+    let allowNavigation = true;
 
     // Vérifiez si la question requiert un champ de texte et si celui-ci est valide
-    if (currentQuestion.value.textField && !isValid.value) {
-      console.log('Input is invalid, cannot move to next question.');
-      showMessageError('Ooops! Vous devez entrer une valeur valide.');
-      allowNavigation = false;
+    if (currentQuestion.value.textField) {
+      if (inputValue.value === '') {
+        showMessageError('Ooops! Vous devez entrer une valeur.');
+        allowNavigation = false;
+      } else if (!/^\d+$/.test(inputValue.value)) {
+        showMessageError('Ooops! Vous devez entrer une valeur numérique valide.');
+        allowNavigation = false;
+      }
     }
 
     // Vérifiez si la question requiert une réponse de bouton radio et si une sélection a été faite
     if (currentQuestion.value.response && !selectionButton.value) {
-      showMessageError('Vous devez faire une sélection.');
+      showMessageError('Ooops! Vous devez faire une sélection.');
       allowNavigation = false;
     }
 
@@ -173,21 +167,13 @@
     if (allowNavigation) {
       if (currentQuestionIndex.value < props.challenge.questions.length - 1) {
         currentQuestionIndex.value++;
-        inputValue.value = null;  // Réinitialiser pour la prochaine question
-        resetError();   // Effacer le message d'erreur
-        selectionButton.value = null;  // Réinitialiser la sélection pour la prochaine question
-        console.log(`Moved to question index: ${currentQuestionIndex.value}`);
+        resetError();
+        selectionButton.value = null;
       } else {
         console.log('Handling form submission...');
-        // Placez ici le code pour gérer la soumission finale du formulaire
       }
     }
   }
-
-  watch(currentQuestionIndex, (newValue) => {
-    inputValue.value = null;
-    errorMessage.value = '';
-  });
 </script>
 
 <style lang="scss">
