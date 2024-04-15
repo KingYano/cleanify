@@ -8,7 +8,7 @@
            placeholder="name"
            required
            v-model="inputValue"
-           @input="updateInput"
+           @input="validateInput"
     >
   </div>
 </template>
@@ -17,26 +17,22 @@
 import { ref } from "vue";
 
 const inputValue = ref('');
-const isValid = ref(true);
-const errorMessage = ref('');
-
 const emits = defineEmits<{
   (e: 'update:modelValue', value: string): void;
-  (e: 'update:isValid', value: boolean): void;
+  (e: 'update:isValid', isValid: boolean, errorMessage: string): void;
 }>();
 
-const updateInput = (event: Event) => {
-  const target = event.target as HTMLInputElement;
-  const filteredValue = target.value.replace(/\D/g, '');
-  inputValue.value = filteredValue;
-  isValid.value = filteredValue.length > 0;
-  errorMessage.value = isValid.value ? '' : "Que des numéros s'il vous plaît";
-  emits('update:modelValue', filteredValue);
-  emits('update:isValid', isValid.value);
-};
+const validateInput = () => {
+  const numericValue = inputValue.value.replace(/\D/g, '');
+  const isValid = numericValue.trim().length > 0;
+  const errorMessage = isValid ? '' : "Veuillez remplir le champ de formulaire avec des chiffres uniquement.";
 
+  emits('update:modelValue', numericValue);
+  emits('update:isValid', isValid, errorMessage);
+  inputValue.value = numericValue;
+};
 </script>
 
 <style lang="scss">
-@import "InputResponse";
+  @import "InputResponse";
 </style>

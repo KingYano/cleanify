@@ -18,8 +18,10 @@ const props = defineProps<{
 const selectedOption = ref<string | null>(null);
 
 const updateSelection = () => {
+  console.log("Selection updated to:", selectedOption.value);  // Log pour vérifier la valeur
   emits('update:selection', selectedOption.value);
 };
+
 
 const emits = defineEmits<{
   (e: 'update:selection', value: string | null): void;
