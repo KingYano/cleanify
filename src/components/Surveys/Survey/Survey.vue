@@ -15,7 +15,7 @@
                 v-if="question.responseContent !== null"
                 :response-content="question.responseContent"
                 :name="String(question.id)"
-                @update:os="os = $event as string"
+                @update:selection="selectionButton = $event as string"
             ></button-response>
           </div>
           <div v-if="question.textField" class="survey-form-input">
@@ -67,7 +67,7 @@ const props = defineProps<{
 }>();
 
 const currentQuestionIndex = ref(0);
-const os = ref<string | null>(null);
+const selectionButton = ref<string | null>(null);
 const answers = ref<Record<string, string | null>>({});
 const inputValue = ref<number | null>(null);
 const isValid = ref(true);
@@ -123,8 +123,8 @@ const currentQuestionInstructions = (question: MailQuestion | DesktopQuestion | 
   if (question.instruction) {
     if (typeof question.instructionContent === 'string') {
       return question.instructionContent;
-    } else if (os.value && question.instructionContent !== null) {
-      const system = getSystemByOSValue(os.value);
+    } else if (selectionButton.value && question.instructionContent !== null) {
+      const system = getSystemByOSValue(selectionButton.value);
       if (system) {
         const instructionContent = getInstructionContent(question, system);
         return instructionContent || '';
@@ -137,7 +137,7 @@ const currentQuestionInstructions = (question: MailQuestion | DesktopQuestion | 
 function previousQuestion() {
   if (currentQuestionIndex.value > 0) {
     currentQuestionIndex.value--;
-    os.value = answers.value[props.challenge.questions[currentQuestionIndex.value].id];
+    selectionButton.value = answers.value[props.challenge.questions[currentQuestionIndex.value].id];
   }
 }
 
