@@ -1,7 +1,6 @@
 import type {Challenge} from "@/interface/Challenge";
 import imageUrlMobile from "@/assets/illustrations/mobile.svg"
 
-
 export const mobileData: Challenge[] = [
     {
         id: 2,

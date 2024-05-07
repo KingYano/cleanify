@@ -5,7 +5,8 @@
         <h3 class="survey-form-title">{{ questionNumber(currentQuestion) }} - {{ questionTitle(currentQuestion) }}</h3>
         <div class="survey-form-paragraph">
           <p v-if="currentQuestion.instruction" class="survey-form-paragraph-instruction">
-            {{ currentQuestionInstructions(currentQuestion) }}</p>
+            {{ currentQuestionInstructions(currentQuestion) }}
+          </p>
           <p v-if="currentQuestion.moreQuestion" class="survey-form-paragraph-question">
             {{ currentQuestion.moreQuestionContent }}</p>
           <p v-if="currentQuestion.textInfo"
@@ -57,12 +58,12 @@
 </template>
 
 <script setup lang="ts">
-  import {ref, computed} from 'vue';
-  import type {Challenge} from '@/interface/Challenge';
-  import ButtonResponse from "@/components/Surveys/TypeResponse/ButtonResponse/ButtonResponse.vue";
-  import InputResponse from "@/components/Surveys/TypeResponse/InputResponse/InputResponse.vue";
+import {computed, ref} from 'vue';
+import type {Challenge} from '@/interface/Challenge';
+import ButtonResponse from "@/components/Surveys/TypeResponse/ButtonResponse/ButtonResponse.vue";
+import InputResponse from "@/components/Surveys/TypeResponse/InputResponse/InputResponse.vue";
 
-  const props = defineProps<{
+const props = defineProps<{
     challenge: Challenge;
   }>();
 
@@ -106,36 +107,13 @@
     return null;
   };
 
-  const getInstructionType = (): string => {
-    return props.challenge.code === 'phone' ? 'MobileSystems' : 'DesktopSystems';
-  };
-
-  const getInstructionContent = (question: MailQuestion | DesktopQuestion | MobileQuestion, system: SystemType): SystemInstructions => {
-    const instructionType = getInstructionType();
-    const instructionContent = question.instructionContent as Record<string, string>;
-
-    if (instructionType === 'MobileSystems') {
-      return instructionContent[system as keyof MobileSystems] || null;
-    } else {
-      return instructionContent[system as keyof DesktopSystems] || null;
-    }
-  };
-
   const currentQuestionInstructions = (question: MailQuestion | DesktopQuestion | MobileQuestion) => {
-    if (question.instruction) {
-      if (typeof question.instructionContent === 'string') {
-        return question.instructionContent;
-      } else if (selectionButton.value && question.instructionContent !== null) {
-        const system = getSystemByOSValue(selectionButton.value);
-        if (system) {
-          const instructionContent = getInstructionContent(question, system);
-          return instructionContent || '';
-        }
-      }
+    if (question.instruction && selectionButton?.value) {
+      const instructionContent = question.instructionContent as Record<string, string>;
+      return instructionContent[selectionButton.value];
     }
     return '';
   };
-
 
   function previousQuestion() {
     if (currentQuestionIndex.value > 0) {

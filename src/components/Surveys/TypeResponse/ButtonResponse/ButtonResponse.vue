@@ -8,25 +8,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+  import { ref } from 'vue';
 
-const props = defineProps<{
-  responseContent: { [key: string]: string };
-  name: string;
-}>();
+  const props = defineProps<{
+    responseContent: { [key: string]: string };
+    name: string;
+  }>();
 
-const selectedOption = ref<string | null>(null);
+  const selectedOption = ref<string | null>(null);
 
-const updateSelection = () => {
-  emits('update:selection', selectedOption.value);
-};
+  const updateSelection = () => {
+    emits('update:selection', selectedOption.value);
+  };
 
 
-const emits = defineEmits<{
-  (e: 'update:selection', value: string | null): void;
-}>();
+  const emits = defineEmits<{
+    (e: 'update:selection', value: string | null): void;
+  }>();
 </script>
-
 
 <style lang="scss">
   @import "ButtonResponse";
