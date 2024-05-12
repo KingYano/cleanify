@@ -5,7 +5,7 @@
         <h3 class="survey-form-title">{{ questionNumber(currentQuestion) }} - {{ questionTitle(currentQuestion) }}</h3>
         <div class="survey-form-paragraph">
           <p v-if="currentQuestion.instruction" class="survey-form-paragraph-instruction">
-            {{ currentQuestionInstructions(currentQuestion) }}
+            {{ getResult(currentQuestion) }}
           </p>
           <p v-if="currentQuestion.moreQuestion" class="survey-form-paragraph-question">
             {{ currentQuestion.moreQuestionContent }}</p>
@@ -73,6 +73,7 @@ const props = defineProps<{
   const showMessage = ref(false);
   const errorMessage = ref('');
   const inputValue = ref('');
+  const valueSelectByUser = ref<string | null>(null);
 
   const currentQuestion = computed(() => {
     return props.challenge.questions[currentQuestionIndex.value];
@@ -107,15 +108,22 @@ const props = defineProps<{
     return null;
   };
 
-  const currentQuestionInstructions = (question: MailQuestion | DesktopQuestion | MobileQuestion) => {
-    if (question.instruction && selectionButton?.value) {
-      const instructionContent = question.instructionContent as Record<string, string>;
-      return instructionContent[selectionButton.value];
+  const getResult = (question: MailQuestion | DesktopQuestion | MobileQuestion) => {
+    if (valueSelectByUser.value !== null) {
+      const osValue = valueSelectByUser.value;
+      const systemType = getSystemByOSValue(osValue);
+
+      if (question.instruction && question.instructionContent && systemType !== null) {
+        const instructionContent = question.instructionContent as Record<SystemType, string>;
+        return instructionContent[systemType];
+      }
     }
+
     return '';
   };
 
-  function previousQuestion() {
+
+function previousQuestion() {
     if (currentQuestionIndex.value > 0) {
       currentQuestionIndex.value--;
       selectionButton.value = answers.value[props.challenge.questions[currentQuestionIndex.value].id];
@@ -138,12 +146,15 @@ const props = defineProps<{
 
     // Vérifiez si la question requiert une réponse de bouton radio et si une sélection a été faite
     if (currentQuestion.value.response && !selectionButton.value) {
+      console.log("mdr")
       showMessageError('Ooops! Vous devez faire une sélection.');
       allowNavigation = false;
     }
 
     // Si la question ne requiert ni champ de texte ni bouton radio, ou si les conditions sont remplies
     if (allowNavigation) {
+      valueSelectByUser.value = selectionButton.value;
+      console.log(valueSelectByUser.value)
       if (currentQuestionIndex.value < props.challenge.questions.length - 1) {
         currentQuestionIndex.value++;
         resetError();
