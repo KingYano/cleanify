@@ -118,7 +118,6 @@ const props = defineProps<{
         return instructionContent[systemType];
       }
     }
-
     return '';
   };
 
@@ -159,7 +158,6 @@ function previousQuestion() {
         currentQuestionIndex.value++;
         resetError();
         inputValue.value = "";
-        selectionButton.value = null;
       } else {
         console.log('Handling form submission...');
       }

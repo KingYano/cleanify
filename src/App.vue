@@ -1,5 +1,5 @@
   <template>
-    <header-navigation></header-navigation>
+    <header-navigation @home="goHome"></header-navigation>
     <component :is="currentView" v-on:next="goToSurvey" :challenge="currentChallenge"></component>
     <footer-section></footer-section>
   </template>
@@ -28,6 +28,10 @@
     });
 
     const currentChallenge = ref<Challenge | null>(null);
+
+    function goHome() {
+      router.push('/');
+    }
 
     function goToSurvey(...args: unknown[]) {
       const challenge = args[0] as Challenge | undefined;

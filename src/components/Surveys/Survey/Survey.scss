@@ -3,6 +3,12 @@
   &-form {
     padding: 52px 32px 0;
 
+    &-error {
+      text-align: center;
+      color: var(--color-error-message);
+      font-weight: var(--normal-font-weight);
+    }
+
     &-title {
       font-size: var(--normal-font);
       font-weight: var(--large-font-weight);
