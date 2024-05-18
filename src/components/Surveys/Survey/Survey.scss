@@ -1,10 +1,10 @@
 .survey {
-  height: calc(100% - 61px);
+  height: calc(100vh - 113px);
+
   &-form {
     padding: 52px 32px 0;
 
     &-error {
-      text-align: center;
       color: var(--color-error-message);
       font-weight: var(--normal-font-weight);
     }
@@ -35,7 +35,7 @@
     }
 
     &-button, &-input {
-      padding-bottom: 32px;
+      padding-bottom: 6px;
     }
 
     &-button {
@@ -43,19 +43,14 @@
       justify-content: center;
     }
 
-    &-input {
-
-    }
-
     &-commands {
       display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       padding: 12px 32px;
 
       &-button-send {
-        display: flex;
-        flex-grow: 1;
-        justify-content: center;
-        align-items: center;
 
         button {
           cursor: pointer;
@@ -71,8 +66,6 @@
 
       &-buttons-navigation {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
         gap: 8px;
 
         button {

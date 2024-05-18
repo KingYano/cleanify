@@ -1,19 +1,18 @@
 <template>
   <div class="daily-section">
     <h2 class="daily-section-title">Challenge du jour :</h2>
-    <div class="slideshow-container">
-      <div v-for="(challenge, index) in challenges" :key="index" class="mySlides fade">
+    <div class="daily-section-slideshow-container">
+      <div v-for="(challenge, index) in challenges" :key="index" class="daily-section-slide daily-section-fade">
         <large-challenge
             :challenge="challenge"
             @start="startChallenge(challenge)"
         ></large-challenge>
       </div>
-      <a class="prev" @click="plusSlides(-1)">&#10094;</a>
-      <a class="next" @click="plusSlides(1)">&#10095;</a>
+      <a class="daily-section-prev" @click="plusSlides(-1)">&#10094;</a>
+      <a class="daily-section-next" @click="plusSlides(1)">&#10095;</a>
     </div>
-    <br>
-    <div style="text-align:center">
-      <span class="dot" v-for="(challenge, index) in challenges" :key="index" @click="currentSlide(index + 1)"></span>
+    <div class="daily-section-" style="text-align:center">
+      <span class="daily-section-dot" v-for="(challenge, index) in challenges" :key="index" @click="currentSlide(index + 1)"></span>
     </div>
   </div>
 </template>
@@ -23,11 +22,11 @@ import LargeChallenge from "@/components/Cards/LargeChallenge/LargeChallenge.vue
 import { mailData } from '@/data/Mail';
 import { desktopData } from '@/data/Desktop';
 import { mobileData } from '@/data/Mobile';
-import {onMounted, ref} from "vue";
-import {useRouter} from "vue-router";
-import type {Challenge} from "@/interface/Challenge";
+import { onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
+import type { Challenge } from "@/interface/Challenge";
 
-const challenges: Challenge[] = [...mailData, ...mobileData, ...desktopData,];
+const challenges: Challenge[] = [...mailData, ...mobileData, ...desktopData];
 
 const activeChallenge = ref<Challenge | null>(null);
 
@@ -37,8 +36,8 @@ const slideIndex = ref(1);
 
 const showSlides = (n: number) => {
   let i: number;
-  let slides = document.getElementsByClassName("mySlides") as HTMLCollectionOf<HTMLElement>;
-  let dots = document.getElementsByClassName("dot");
+  let slides = document.getElementsByClassName("daily-section-slide") as HTMLCollectionOf<HTMLElement>;
+  let dots = document.getElementsByClassName("daily-section-dot");
   if (n > slides.length) {
     slideIndex.value = 1;
   }
@@ -49,12 +48,12 @@ const showSlides = (n: number) => {
     slides[i].style.display = "none";
   }
   for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
+    dots[i].className = dots[i].className.replace(" daily-section-active", "");
   }
   if (slides[slideIndex.value - 1]) {
     slides[slideIndex.value - 1].style.display = "block";
   }
-  dots[slideIndex.value - 1].className += " active";
+  dots[slideIndex.value - 1].className += " daily-section-active";
 };
 
 const plusSlides = (n: number) => {
@@ -79,5 +78,5 @@ const startChallenge = (challenge: Challenge) => {
 </script>
 
 <style lang="scss">
-@import "DailySection";
+  @import "DailySection";
 </style>

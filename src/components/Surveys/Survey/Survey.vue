@@ -109,22 +109,28 @@ const props = defineProps<{
   };
 
   const getResult = (question: MailQuestion | DesktopQuestion | MobileQuestion) => {
-    if (valueSelectByUser.value !== null) {
-      const osValue = valueSelectByUser.value;
-      const systemType = getSystemByOSValue(osValue);
+  if (props.challenge.code === "mail" && question.instruction && question.instructionContent) {
+    return question.instructionContent as string;
+  }
 
-      if (question.instruction && question.instructionContent && systemType !== null) {
-        const instructionContent = question.instructionContent as Record<SystemType, string>;
-        return instructionContent[systemType];
-      }
+  if (valueSelectByUser.value !== null) {
+    const osValue = valueSelectByUser.value;
+    const systemType = getSystemByOSValue(osValue);
+
+    if (question.instruction && question.instructionContent && systemType !== null) {
+      const instructionContent = question.instructionContent as Record<SystemType, string>;
+      return instructionContent[systemType];
     }
-    return '';
-  };
+  }
+
+  return '';
+};
 
 
 function previousQuestion() {
     if (currentQuestionIndex.value > 0) {
       currentQuestionIndex.value--;
+      resetError();
       selectionButton.value = answers.value[props.challenge.questions[currentQuestionIndex.value].id];
     }
   }
@@ -145,7 +151,6 @@ function previousQuestion() {
 
     // Vérifiez si la question requiert une réponse de bouton radio et si une sélection a été faite
     if (currentQuestion.value.response && !selectionButton.value) {
-      console.log("mdr")
       showMessageError('Ooops! Vous devez faire une sélection.');
       allowNavigation = false;
     }
@@ -153,7 +158,6 @@ function previousQuestion() {
     // Si la question ne requiert ni champ de texte ni bouton radio, ou si les conditions sont remplies
     if (allowNavigation) {
       valueSelectByUser.value = selectionButton.value;
-      console.log(valueSelectByUser.value)
       if (currentQuestionIndex.value < props.challenge.questions.length - 1) {
         currentQuestionIndex.value++;
         resetError();
