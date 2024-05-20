@@ -7,6 +7,7 @@
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
+  margin: 0 16px 26px 16px;
 
   &-content {
     &-information {
@@ -84,8 +85,6 @@
 
 @media (min-width: 1600px) {
   .large-challenge {
-    background-size: 40%;
-
     &-content {
       padding: 60px;
 

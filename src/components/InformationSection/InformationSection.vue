@@ -14,7 +14,7 @@
       <div class="info-section-content">
         <h2 class="info-section-content-title">Quels bénéfices offre <span class="info-section-content-title-highlight">Cleanify</span> ?</h2>
         <p class="info-section-content-description">
-          Rejoindre Cleanify améliore la performance des appareils, réduit l'empreinte énergétique et
+          Cleanify améliore la performance des appareils, réduit l'empreinte énergétique et
           sensibilise aux effets environnementaux du numérique pour une utilisation plus durable.
         </p>
       </div>

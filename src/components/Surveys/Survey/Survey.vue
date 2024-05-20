@@ -58,12 +58,12 @@
 </template>
 
 <script setup lang="ts">
-import {computed, ref} from 'vue';
+  import {computed, ref} from 'vue';
 import type {Challenge} from '@/interface/Challenge';
 import ButtonResponse from "@/components/Surveys/TypeResponse/ButtonResponse/ButtonResponse.vue";
 import InputResponse from "@/components/Surveys/TypeResponse/InputResponse/InputResponse.vue";
 
-const props = defineProps<{
+  const props = defineProps<{
     challenge: Challenge;
   }>();
 
@@ -170,5 +170,5 @@ function previousQuestion() {
 </script>
 
 <style lang="scss">
-@import "Survey";
+  @import "Survey";
 </style>

@@ -1,5 +1,5 @@
 import type {Challenge} from "@/interface/Challenge";
-import imageUrlDesktop from "@/assets/illustrations/files.svg"
+import imageUrlDesktop from "@/assets/illustrations/desktop.svg"
 
 export const desktopData: Challenge[] = [
     {
