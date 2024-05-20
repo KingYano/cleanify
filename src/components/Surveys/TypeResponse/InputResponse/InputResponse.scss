@@ -1,10 +1,12 @@
 .input-response {
+    text-align: center;
+
   &-label {
     display: none;
   }
 
   &-input {
-    width: 100%;
+    min-width: 70%;
     padding: 8px;
     background-color: var(--first-color-0);
     border: solid var(--first-color-950);

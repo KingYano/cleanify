@@ -40,6 +40,7 @@
         background-color: var(--color-button);
         border-radius: var(--normal-border-radius);
         border: unset;
+        cursor: pointer;
       }
     }
   }
@@ -59,7 +60,7 @@
 
 
       &-information {
-        width: 415px;
+        width: 460px;
         margin: 0 25px 0 0;
 
         &-title {
@@ -89,9 +90,6 @@
       padding: 60px;
 
       &-information {
-        width: 415px;
-        margin: 0 25px 0 0;
-
         &-title {
           font-size: var(--medium-large-font);
         }
@@ -114,7 +112,6 @@
   .large-challenge {
     &-content {
       &-information {
-
         &-title {
           font-size: var(--x-medium-large-font);
         }

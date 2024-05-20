@@ -1,6 +1,6 @@
 <template>
   <header class="header-section">
-    <h1 class="header-section-title" @click="$emit('home')">Cleanify</h1>
+    <a href="/" class="header-section-title" @click="$emit('home')">Cleanify</a>
   </header>
 </template>
 

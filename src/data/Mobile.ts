@@ -193,7 +193,7 @@ export const mobileData: Challenge[] = [
                 instruction: true,
                 instructionContent: {
                     ios: "Allez dans \"Paramètres\" > Onglet Safari > Effacer historique et données de sites.",
-                    android: "Allez dans Google > Icone paramètres (trois petits points) en haut à droite > Onhlet \"Historique\" > Effacer les données de navigation."
+                    android: "Allez dans Google > Icone paramètres (trois petits points) en haut à droite > Onglet \"Historique\" > Effacer les données de navigation."
                 },
                 system: {
                     android: "Android",

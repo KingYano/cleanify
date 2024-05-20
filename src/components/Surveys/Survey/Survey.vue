@@ -4,8 +4,7 @@
       <div class="survey-form-item">
         <h3 class="survey-form-title">{{ questionNumber(currentQuestion) }} - {{ questionTitle(currentQuestion) }}</h3>
         <div class="survey-form-paragraph">
-          <p v-if="currentQuestion.instruction" class="survey-form-paragraph-instruction">
-            {{ getResult(currentQuestion) }}
+          <p v-if="currentQuestion.instruction" class="survey-form-paragraph-instruction" v-html="getResult(currentQuestion)">
           </p>
           <p v-if="currentQuestion.moreQuestion" class="survey-form-paragraph-question">
             {{ currentQuestion.moreQuestionContent }}</p>
@@ -59,9 +58,9 @@
 
 <script setup lang="ts">
   import {computed, ref} from 'vue';
-import type {Challenge} from '@/interface/Challenge';
-import ButtonResponse from "@/components/Surveys/TypeResponse/ButtonResponse/ButtonResponse.vue";
-import InputResponse from "@/components/Surveys/TypeResponse/InputResponse/InputResponse.vue";
+  import type {Challenge} from '@/interface/Challenge';
+  import ButtonResponse from "@/components/Surveys/TypeResponse/ButtonResponse/ButtonResponse.vue";
+  import InputResponse from "@/components/Surveys/TypeResponse/InputResponse/InputResponse.vue";
 
   const props = defineProps<{
     challenge: Challenge;

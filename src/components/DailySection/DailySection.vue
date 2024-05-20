@@ -8,11 +8,19 @@
             @start="startChallenge(challenge)"
         ></large-challenge>
       </div>
-      <a class="daily-section-prev" @click="plusSlides(-1)">&#10094;</a>
-      <a class="daily-section-next" @click="plusSlides(1)">&#10095;</a>
+      <a role="button" aria-label="Questionnaire précédent" tabindex="0" class="daily-section-prev" @keydown.enter="plusSlides(-1)" @click="plusSlides(-1)">&#10094;</a>
+      <a role="button" aria-label="Questionnaire suivant" tabindex="0" class="daily-section-next" @keydown.enter="plusSlides(1)" @click="plusSlides(1)">&#10095;</a>
     </div>
     <div class="daily-section-navigation">
-      <span class="daily-section-dot" v-for="(challenge, index) in challenges" :key="index" @click="currentSlide(index + 1)"></span>
+      <a
+        role="button"
+        tabindex="0"
+        :aria-label="'Aller au questionnaire numéro ' + (index + 1)"
+        class="daily-section-dot"
+        v-for="(challenge, index) in challenges"
+        :key="index"
+        @keydown.enter="currentSlide(index + 1)"
+        @click="currentSlide(index + 1)"></a>
     </div>
   </div>
 </template>

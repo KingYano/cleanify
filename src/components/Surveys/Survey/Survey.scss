@@ -1,5 +1,8 @@
 .survey {
   height: calc(100vh - 113px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   &-form {
     padding: 52px 32px 0;
@@ -21,6 +24,10 @@
       &-instruction {
         font-weight: var(--normal-font-weight);
         padding-bottom: 32px;
+
+        span {
+          font-weight: var(--maximum-font-weight);
+        }
       }
 
       &-question {

@@ -1,6 +1,6 @@
   <template>
     <header-navigation @home="goHome"></header-navigation>
-    <component :is="currentView" v-on:next="goToSurvey" :challenge="currentChallenge"></component>
+    <component :is="currentView" @next="goToSurvey" :challenge="currentChallenge"></component>
     <footer-section></footer-section>
   </template>
 

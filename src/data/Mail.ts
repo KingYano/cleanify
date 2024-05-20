@@ -1,5 +1,9 @@
-import type {Challenge} from "@/interface/Challenge";
-import imageUrlMail from "@/assets/illustrations/mail.svg"
+import type { Challenge } from "@/interface/Challenge";
+import imageUrlMail from "@/assets/illustrations/mail.svg";
+
+function addBrToInstructionContent(content: string): string {
+    return content.replace(/\. /g, '.<br>');
+}
 
 export const mailData: Challenge[] = [
     {
@@ -35,7 +39,10 @@ export const mailData: Challenge[] = [
                 responseContent: null,
                 textField: false,
                 instruction: true,
-                instructionContent: "Taille : pour identifier les e-mails qui prennent le plus de place dans votre boîte. Date : pour supprimer les e-mails les plus anciens. Nom de l'expéditeur : pour identifier les conversations obsolètes. Objet : pour les newsletters, promotions marketing, les emails d'invitation à des réunions, notifications Facebook, Slack, Notion etc.",
+                instructionContent: addBrToInstructionContent(`<span>Taille :</span> pour identifier les e-mails qui prennent le plus de place dans votre boîte.<br>
+            <span>Date :</span> pour supprimer les e-mails les plus anciens.<br>
+            <span>Nom de l'expéditeur :</span> pour identifier les conversations obsolètes.<br>
+            <span>Objet :</span> pour les newsletters, promotions marketing, les emails d'invitation à des réunions, notifications Facebook, Slack, Notion etc.`),
                 moreQuestion: false,
                 moreQuestionContent: "",
                 textInfo: false,
@@ -51,7 +58,7 @@ export const mailData: Challenge[] = [
                 responseContent: null,
                 textField: true,
                 instruction: true,
-                instructionContent: "Sélectionnez les emails que vous souhaitez supprimer et cliquez tout simplement sur Supprimer. Pour un véritable impact, il faut viser haut : supprimez au moins 500 emails. Avec les filtres, vous pouvez effacer en masse !",
+                instructionContent: addBrToInstructionContent("Sélectionnez les emails que vous souhaitez supprimer et cliquez tout simplement sur Supprimer. Pour un véritable impact, il faut viser haut : supprimez au moins 500 emails. Avec les filtres, vous pouvez effacer en masse !"),
                 moreQuestion: true,
                 moreQuestionContent: "Combien d'emails avez-vous effacé ?",
                 textInfo: true,
@@ -67,7 +74,7 @@ export const mailData: Challenge[] = [
                 responseContent: null,
                 textField: true,
                 instruction: true,
-                instructionContent: "À la fin de chaque newsletter, vous trouverez un lien \"Unsubscribe\" ou \"Désabonnez-vous\" écrit en minuscule. Attention ! Il ne s'agit pas toujours d'un seul clic. Quelques fois vous serez reconduit vers une page externe.",
+                instructionContent: addBrToInstructionContent("À la fin de chaque newsletter, vous trouverez un lien \"Unsubscribe\" ou \"Désabonnez-vous\" écrit en minuscule. Attention ! Il ne s'agit pas toujours d'un seul clic. Quelques fois vous serez reconduit vers une page externe."),
                 moreQuestion: true,
                 moreQuestionContent: "De combien de newsletters vous êtes vous désinscrit ? ",
                 textInfo: false,
@@ -83,7 +90,7 @@ export const mailData: Challenge[] = [
                 responseContent: null,
                 textField: true,
                 instruction: true,
-                instructionContent: "Vous pouvez limiter ces notifications dans les paramètres de chaque application.",
+                instructionContent: addBrToInstructionContent("Vous pouvez limiter ces notifications dans les paramètres de chaque application."),
                 moreQuestion: false,
                 moreQuestionContent: "",
                 textInfo: false,
@@ -99,7 +106,7 @@ export const mailData: Challenge[] = [
                 responseContent: { A: "Oui", B: "Non" },
                 textField: false,
                 instruction: true,
-                instructionContent: "️Cliquez sur l'onglet Corbeille à gauche de votre messagerie > Vider la corbeille. Certaines messageries suppriment les emails présents dans la corbeille au bout de 30 jours, mais pourquoi attendre ?",
+                instructionContent: addBrToInstructionContent("️Cliquez sur l'onglet Corbeille à gauche de votre messagerie > Vider la corbeille. Certaines messageries suppriment les emails présents dans la corbeille au bout de 30 jours, mais pourquoi attendre ?"),
                 moreQuestion: true,
                 moreQuestionContent: "Avez-vous vidé votre corbeille ?",
                 textInfo: false,
