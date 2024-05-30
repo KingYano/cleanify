@@ -4,12 +4,9 @@
       <div class="survey-form-item">
         <h3 class="survey-form-title">{{ questionNumber(currentQuestion) }} - {{ questionTitle(currentQuestion) }}</h3>
         <div class="survey-form-paragraph">
-          <p v-if="currentQuestion.instruction" class="survey-form-paragraph-instruction" v-html="getResult(currentQuestion)">
-          </p>
-          <p v-if="currentQuestion.moreQuestion" class="survey-form-paragraph-question">
-            {{ currentQuestion.moreQuestionContent }}</p>
-          <p v-if="currentQuestion.textInfo"
-             class="survey-form-paragraph-question-info">{{ currentQuestion.textInfoContent }}</p>
+          <p v-if="currentQuestion.instruction" class="survey-form-paragraph-instruction" v-html="getResult(currentQuestion)"></p>
+          <p v-if="currentQuestion.moreQuestion" class="survey-form-paragraph-question">{{ currentQuestion.moreQuestionContent }}</p>
+          <p v-if="currentQuestion.textInfo" class="survey-form-paragraph-question-info">{{ currentQuestion.textInfoContent }}</p>
           <div v-if="currentQuestion.response" class="survey-form-button">
             <button-response
                 v-if="currentQuestion.responseContent !== null"
@@ -57,14 +54,12 @@
 </template>
 
 <script setup lang="ts">
-  import {computed, ref} from 'vue';
-  import type {Challenge} from '@/interface/Challenge';
+  import { computed, ref } from 'vue';
+  import type { Challenge } from '@/interface/Challenge';
   import ButtonResponse from "@/components/Surveys/TypeResponse/ButtonResponse/ButtonResponse.vue";
   import InputResponse from "@/components/Surveys/TypeResponse/InputResponse/InputResponse.vue";
 
-  const props = defineProps<{
-    challenge: Challenge;
-  }>();
+  const props = defineProps<{ challenge: Challenge }>();
 
   const currentQuestionIndex = ref(0);
   const selectionButton = ref<string | null>(null);
@@ -74,27 +69,23 @@
   const inputValue = ref('');
   const valueSelectByUser = ref<string | null>(null);
 
-  const currentQuestion = computed(() => {
-    return props.challenge.questions[currentQuestionIndex.value];
-  });
+  const currentQuestion = computed(() => props.challenge.questions[currentQuestionIndex.value]);
 
   const showMessageError = (msg: string) => {
     errorMessage.value = msg;
     showMessage.value = true;
   };
 
-  function resetError() {
+  const resetError = () => {
     errorMessage.value = '';
     showMessage.value = false;
-  }
+  };
 
   const questionNumber = (question: MailQuestion | DesktopQuestion | MobileQuestion) => question.questionNumber;
 
   const questionTitle = (question: MailQuestion | DesktopQuestion | MobileQuestion) => question.title;
 
-  const buttonLabel = computed(() => {
-    return currentQuestionIndex.value === props.challenge.questions.length - 1 ? 'Envoyer' : 'Suivant';
-  });
+  const buttonLabel = computed(() => currentQuestionIndex.value === props.challenge.questions.length - 1 ? 'Envoyer' : 'Suivant');
 
   type SystemType = keyof MobileSystems | keyof DesktopSystems;
 
@@ -108,36 +99,31 @@
   };
 
   const getResult = (question: MailQuestion | DesktopQuestion | MobileQuestion) => {
-  if (props.challenge.code === "mail" && question.instruction && question.instructionContent) {
-    return question.instructionContent as string;
-  }
-
-  if (valueSelectByUser.value !== null) {
-    const osValue = valueSelectByUser.value;
-    const systemType = getSystemByOSValue(osValue);
-
-    if (question.instruction && question.instructionContent && systemType !== null) {
-      const instructionContent = question.instructionContent as Record<SystemType, string>;
-      return instructionContent[systemType];
+    if (props.challenge.code === "mail" && question.instruction && question.instructionContent) {
+      return question.instructionContent as string;
     }
-  }
+    if (valueSelectByUser.value !== null) {
+      const osValue = valueSelectByUser.value;
+      const systemType = getSystemByOSValue(osValue);
+      if (question.instruction && question.instructionContent && systemType !== null) {
+        const instructionContent = question.instructionContent as Record<SystemType, string>;
+        return instructionContent[systemType];
+      }
+    }
+    return '';
+  };
 
-  return '';
-};
-
-
-function previousQuestion() {
+  const previousQuestion = () => {
     if (currentQuestionIndex.value > 0) {
       currentQuestionIndex.value--;
       resetError();
       selectionButton.value = answers.value[props.challenge.questions[currentQuestionIndex.value].id];
     }
-  }
+  };
 
-  function nextQuestion() {
+  const nextQuestion = () => {
     let allowNavigation = true;
 
-    // Vérifiez si la question requiert un champ de texte et si celui-ci est valide
     if (currentQuestion.value.textField) {
       if (inputValue.value === '') {
         showMessageError('Ooops! Vous devez entrer une valeur.');
@@ -148,13 +134,11 @@ function previousQuestion() {
       }
     }
 
-    // Vérifiez si la question requiert une réponse de bouton radio et si une sélection a été faite
     if (currentQuestion.value.response && !selectionButton.value) {
       showMessageError('Ooops! Vous devez faire une sélection.');
       allowNavigation = false;
     }
 
-    // Si la question ne requiert ni champ de texte ni bouton radio, ou si les conditions sont remplies
     if (allowNavigation) {
       valueSelectByUser.value = selectionButton.value;
       if (currentQuestionIndex.value < props.challenge.questions.length - 1) {
@@ -165,7 +149,7 @@ function previousQuestion() {
         console.log('Handling form submission...');
       }
     }
-  }
+  };
 </script>
 
 <style lang="scss">
