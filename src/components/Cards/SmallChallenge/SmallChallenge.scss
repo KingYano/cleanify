@@ -6,6 +6,12 @@
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: 50% 10%;
+  transition: transform 0.3s ease;
+
+
+  &:hover {
+    transform: scale(1.001) rotate(0.5deg);
+  }
 
   &-information {
     margin: 264px 21px 21px;
