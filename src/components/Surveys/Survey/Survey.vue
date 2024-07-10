@@ -55,11 +55,13 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue';
+  import { useRouter } from 'vue-router';
   import type { Challenge } from '@/interface/Challenge';
   import ButtonResponse from "@/components/Surveys/TypeResponse/ButtonResponse/ButtonResponse.vue";
   import InputResponse from "@/components/Surveys/TypeResponse/InputResponse/InputResponse.vue";
 
   const props = defineProps<{ challenge: Challenge }>();
+  const router = useRouter();
 
   const currentQuestionIndex = ref(0);
   const selectionButton = ref<string | null>(null);
@@ -139,6 +141,10 @@
       allowNavigation = false;
     }
 
+    console.log('allowNavigation:', allowNavigation);
+    console.log('currentQuestionIndex:', currentQuestionIndex.value);
+    console.log('Total Questions:', props.challenge.questions.length);
+
     if (allowNavigation) {
       valueSelectByUser.value = selectionButton.value;
       if (currentQuestionIndex.value < props.challenge.questions.length - 1) {
@@ -146,7 +152,8 @@
         resetError();
         inputValue.value = "";
       } else {
-        console.log('Handling form submission...');
+        console.log('Redirecting to /submit');
+        router.push('/submit');
       }
     }
   };

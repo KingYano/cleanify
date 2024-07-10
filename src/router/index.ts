@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from '../App.vue';
 import Rules from '../components/Surveys/Rules/Rules.vue';
 import Survey from '../components/Surveys/Survey/Survey.vue';
+import UserInfoForm from "@/components/Surveys/UserInfoForm/UserInfoForm.vue";
 
 const routes = [
   {
@@ -20,6 +21,11 @@ const routes = [
     name: 'survey',
     component: Survey,
     props: true,
+  },
+  {
+    path: '/submit',
+    name: 'submit',
+    component: UserInfoForm,
   },
 ];
 

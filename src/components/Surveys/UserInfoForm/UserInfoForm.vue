@@ -45,28 +45,5 @@ function submitForm() {
 </script>
 
 <style lang="scss">
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
 
-input, select {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  padding: 10px 15px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
 </style>
